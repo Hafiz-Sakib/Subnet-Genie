@@ -20,4 +20,5 @@ function App() {
   );
 }
 
+// Default export for the component
 export default App;
