@@ -2,6 +2,8 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const VLSMPage = () => {
+  console.log("VLSMPage Loaded");
+
   const location = useLocation();
   const navigate = useNavigate();
   const { baseIP, originalMask, hostRequirements } = location.state;
@@ -62,7 +64,7 @@ const VLSMPage = () => {
       parseInt(originalMask, 10),
       hostRequirements
     );
-    console.log("Results:", results);
+    console.log("Navigating with results:", results);
     navigate("/vlsm-results", { state: { results } }); // Passing results to the VLSMResults page
   } catch (error) {
     alert(error.message);

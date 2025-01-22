@@ -3,8 +3,8 @@ import { useLocation } from "react-router-dom";
 
 const VLSMResults = () => {
   const location = useLocation();
-  const { results } = location.state; // Get the results passed from VLSMPage
-
+  const results = location?.state?.results; // Safe access
+  console.log("VLSMResults Loaded", results);
   const [subnetResults, setSubnetResults] = useState([]);
 
   useEffect(() => {
