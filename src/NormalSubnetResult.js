@@ -3,6 +3,19 @@ import React, { useEffect, useState } from "react";
 function NormalSubnetResult() {
   const [subnets, setSubnets] = useState([]);
 
+  function getSubnetPrefixLength(subnetMask) {
+    // Convert the subnet mask to binary form
+    let binarySubnetMask = subnetMask
+      .split(".")
+      .map((octet) => {
+        return parseInt(octet).toString(2).padStart(8, "0");
+      })
+      .join("");
+
+    // Count the number of 1s in the binary subnet mask
+    let prefixLength = binarySubnetMask.split("1").length - 1;
+    return prefixLength;
+  }
   useEffect(() => {
     const result = JSON.parse(sessionStorage.getItem("subnets"));
     if (result) {
@@ -26,7 +39,7 @@ function NormalSubnetResult() {
             </h3>
             <p className="text-gray-600 mb-2">
               <span className="font-semibold">Network Address:</span>{" "}
-              {subnet.networkAddress}/{subnet.subnetMask}
+              {subnet.networkAddress}/{getSubnetPrefixLength(subnet.subnetMask)}
             </p>
             <p className="text-gray-600 mb-2">
               <span className="font-semibold">Subnet Mask:</span>{" "}
