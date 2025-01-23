@@ -39,7 +39,7 @@ git clone [https://your-github-repo-url.git](https://github.com/Hafiz-Sakib/Subn
 ```
 
 npm install
-`` (or`yarn install`) ``
+(or`yarn install`)
 
 ## Running the application
 
