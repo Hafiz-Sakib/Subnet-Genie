@@ -7,6 +7,7 @@ import "./index.css";
 import NormalSubnetResult from "./NormalSubnetResult";
 import VLSMForm from "./VLSMForm";
 import VLSMResults from "./VLSMResults";
+import VLSMPage from "./VLSMPage";
 // Create a root using createRoot
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -17,6 +18,7 @@ root.render(
       <Route path="/normal-subnet" element={<NormalSubnetForm />} />
       <Route path="/normal-subnet-results" element={<NormalSubnetResult />} />
       <Route path="/vlsm-subnet" element={<VLSMForm />} />
+      <Route path="/vlsm-page" element={<VLSMPage />} />
       <Route path="/vlsm-results" element={<VLSMResults />} />
     </Routes>
   </Router>

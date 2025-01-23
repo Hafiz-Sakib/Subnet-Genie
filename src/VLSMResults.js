@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const VLSMResults = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const results = location?.state?.results; // Safe access
   console.log("VLSMResults Loaded", results);
   const [subnetResults, setSubnetResults] = useState([]);
@@ -33,6 +34,16 @@ const VLSMResults = () => {
         ) : (
           <p>No results to display.</p>
         )}
+      </div>
+
+      {/* Calculate Again Button */}
+      <div className="mt-6">
+        <button
+          onClick={() => navigate("/vlsm-subnet")}
+          className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+        >
+          Calculate Again
+        </button>
       </div>
     </div>
   );

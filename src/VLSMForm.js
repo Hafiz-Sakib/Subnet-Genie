@@ -20,7 +20,7 @@ const VLSMForm = () => {
     };
 
     // Navigate to the results page and pass the form data via state
-    navigate("/vlsm-results", { state: formData });
+    navigate("/vlsm-page", { state: formData });
   };
 
   const handleHostRequirementsChange = (e, index) => {
