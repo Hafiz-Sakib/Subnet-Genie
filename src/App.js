@@ -25,7 +25,7 @@ function App() {
       </div>
       <footer className="mt-10 text-center text-sm bg-black bg-opacity-20 p-4 rounded-lg shadow-md">
         <div className="font-medium">
-          Developed by
+          Made with ❤️ by
           <a
             href="https://github.com/hafiz-sakib"
             target="_blank"
