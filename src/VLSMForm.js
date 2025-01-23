@@ -114,18 +114,16 @@ const VLSMForm = () => {
       </div>
       <footer className="mt-10 text-center text-sm bg-black bg-opacity-20 p-4 rounded-lg shadow-md">
         <div className="font-medium">
-          Developed by
+          Made with ❤️ by
           <a
             href="https://github.com/hafiz-sakib"
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-1 text-blue-300 hover:text-blue-500 underline transition-all"
+            className="ml-1 no-underline text-blue-300 hover:text-blue-500  transition-all"
           >
             Mohammad Hafizur Rahman Sakib
           </a>
-        </div>
-        <div className="mt-2 text-xs">
-          © {new Date().getFullYear()} All rights reserved.
+          <div>Thanks For Visiting!</div>
         </div>
       </footer>
     </div>
