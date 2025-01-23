@@ -8,6 +8,7 @@ import NormalSubnetResult from "./NormalSubnetResult";
 import VLSMForm from "./VLSMForm";
 import VLSMResults from "./VLSMResults";
 import VLSMPage from "./VLSMPage";
+
 // Create a root using createRoot
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
