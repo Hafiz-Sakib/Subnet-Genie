@@ -1,14 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const VLSMPage = () => {
+  const [showModal, setShowModal] = useState(false); // Modal state
   const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!location.state) {
       console.error("No input data found. Redirecting to the VLSM form.");
-      navigate("/vlsm-form");
+      setShowModal(true); // Show modal if no input data
+      setTimeout(() => navigate("/"), 3000); // Redirect to Home after 3 seconds
       return;
     }
 
@@ -86,7 +88,32 @@ const VLSMPage = () => {
     }
   }, [location.state, navigate]);
 
-  return <div>Calculating VLSM, please wait...</div>;
+  // Modal JSX
+  const Modal = () => (
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 backdrop-blur-md">
+      <div className="bg-white p-8 rounded-lg shadow-lg max-w-sm mx-auto text-center">
+        <h2 className="text-xl font-semibold text-red-600">Error!</h2>
+        <p className="mt-4 text-gray-600">
+          No input data found. Redirecting to home...
+        </p>
+        <div className="mt-6">
+          <button
+            onClick={() => navigate("/")}
+            className="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+          >
+            Go to Home
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+
+  return (
+    <div>
+      {showModal && <Modal />}
+      <div>Calculating VLSM, please wait...</div>
+    </div>
+  );
 };
 
 export default VLSMPage;
