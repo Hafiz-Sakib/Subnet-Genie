@@ -48,6 +48,10 @@ const VLSMResults = () => {
                       {result.subnetMaskDecimal}
                     </p>
                     <p>
+                      <strong>Subnet Mask:</strong>
+                      {result.wildcardMask}
+                    </p>
+                    <p>
                       <strong>Broadcast Address:</strong>{" "}
                       {result.broadcastAddress}
                     </p>
@@ -75,6 +79,9 @@ const VLSMResults = () => {
                         Subnet Mask
                       </th>
                       <th className="py-4 px-6 sm:px-4 border-b text-lg font-semibold text-gray-800">
+                        WildCard Mask
+                      </th>
+                      <th className="py-4 px-6 sm:px-4 border-b text-lg font-semibold text-gray-800">
                         Broadcast Address
                       </th>
                       <th className="py-4 px-6 sm:px-4 border-b text-lg font-semibold text-gray-800">
@@ -98,6 +105,9 @@ const VLSMResults = () => {
                         </td>
                         <td className="py-4 px-6 sm:px-4 border-b text-lg text-gray-800">
                           {result.subnetMaskDecimal}
+                        </td>
+                        <td className="py-4 px-6 sm:px-4 border-b text-lg text-gray-800">
+                          {result.wildcardMask}
                         </td>
                         <td className="py-4 px-6 sm:px-4 border-b text-lg text-gray-800">
                           {result.broadcastAddress}
