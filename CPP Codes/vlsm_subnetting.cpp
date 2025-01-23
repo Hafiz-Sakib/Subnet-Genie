@@ -1,10 +1,6 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <algorithm>
-#include <cmath>
-#include <stdexcept>
+// The mighty algorithm for calculation of subnets is implemented in the calculateSubnets function.
 
+#include <bits/stdc++.h>
 using namespace std;
 
 // Structure to hold subnet information

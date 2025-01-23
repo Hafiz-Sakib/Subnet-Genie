@@ -1,8 +1,6 @@
-#include <iostream>
-#include <vector>
-#include <cmath>
-#include <algorithm>
+// The mighty algorithm for calculation of subnets is implemented in the calculateSubnets function.
 
+#include <bits/stdc++.h>
 using namespace std;
 
 // Function to calculate the nearest power of 2 greater than or equal to a number

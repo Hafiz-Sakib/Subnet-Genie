@@ -1,9 +1,5 @@
-#include <iostream>
-#include <string>
-#include <cmath>
-#include <sstream>
-#include <iomanip>
-
+// The mighty algortithm for calculaton of subnets is implemented in the calculateSubnets function.
+#include <bits/stdc++.h>
 using namespace std;
 
 // Convert an integer to dotted decimal format
