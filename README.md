@@ -6,7 +6,7 @@
 
 ## 🎥 Demo
 
-![Website Demo](https://i.postimg.cc/2y8NkDyX/webpage.png)
+![Website Demo](https://i.postimg.cc/qMYXyLLq/subnet-genie.png)
 
 ---
 
