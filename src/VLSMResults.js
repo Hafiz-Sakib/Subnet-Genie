@@ -48,7 +48,7 @@ const VLSMResults = () => {
                       {result.subnetMaskDecimal}
                     </p>
                     <p>
-                      <strong>Subnet Mask:</strong>
+                      <strong>WildCard Mask:</strong>
                       {result.wildcardMask}
                     </p>
                     <p>
