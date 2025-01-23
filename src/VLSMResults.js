@@ -87,8 +87,8 @@ const VLSMResults = () => {
                         key={result.networkAddress} // Assuming unique network address
                         className={`${
                           result.networkAddress.length % 2 === 0
-                            ? "bg-teal-100"
-                            : "bg-teal-200"
+                            ? "bg-teal-200"
+                            : "bg-teal-600"
                         }`}
                       >
                         <td className="py-4 px-6 sm:px-4 border-b text-lg text-gray-800">
