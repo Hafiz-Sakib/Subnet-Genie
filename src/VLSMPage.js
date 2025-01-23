@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const VLSMPage = () => {
-  console.log("VLSMPage Loaded");
-
   const location = useLocation();
   const navigate = useNavigate();
 

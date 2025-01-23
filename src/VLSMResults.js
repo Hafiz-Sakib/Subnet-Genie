@@ -4,8 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 const VLSMResults = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const results = location?.state?.results; // Safe access
-  console.log("VLSMResults Loaded", results);
+  const results = location?.state?.results;
   const [subnetResults, setSubnetResults] = useState([]);
 
   useEffect(() => {
