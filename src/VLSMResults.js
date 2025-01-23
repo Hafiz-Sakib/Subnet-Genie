@@ -29,10 +29,12 @@ const VLSMResults = () => {
             {/* Mobile Card View */}
             <div className="sm:hidden">
               <div className="grid grid-cols-1 gap-6">
-                {subnetResults.map((result) => (
+                {subnetResults.map((result, index) => (
                   <div
                     key={result.networkAddress} // Assuming unique network address
-                    className="p-6 rounded-lg bg-teal-500 text-white"
+                    className={`p-6 rounded-lg ${
+                      index % 2 === 0 ? "bg-teal-200" : "bg-teal-100"
+                    } text-black`} // Black text for mobile devices
                   >
                     <h3 className="text-2xl font-semibold mb-4">
                       Subnet: {result.requiredHosts} Hosts
@@ -68,10 +70,10 @@ const VLSMResults = () => {
                         Required Hosts
                       </th>
                       <th className="py-4 px-6 sm:px-4 border-b text-lg font-semibold text-gray-800">
-                        Subnet Mask
+                        Network Address
                       </th>
                       <th className="py-4 px-6 sm:px-4 border-b text-lg font-semibold text-gray-800">
-                        Network Address
+                        Subnet Mask
                       </th>
                       <th className="py-4 px-6 sm:px-4 border-b text-lg font-semibold text-gray-800">
                         Broadcast Address
@@ -96,10 +98,10 @@ const VLSMResults = () => {
                           {result.requiredHosts}
                         </td>
                         <td className="py-4 px-6 sm:px-4 border-b text-lg text-gray-800">
-                          /{result.subnetMask}
+                          {result.networkAddress}
                         </td>
                         <td className="py-4 px-6 sm:px-4 border-b text-lg text-gray-800">
-                          {result.networkAddress}
+                          /{result.subnetMask}
                         </td>
                         <td className="py-4 px-6 sm:px-4 border-b text-lg text-gray-800">
                           {result.broadcastAddress}
