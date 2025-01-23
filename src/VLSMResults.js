@@ -82,13 +82,11 @@ const VLSMResults = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {subnetResults.map((result) => (
+                    {subnetResults.map((result, index) => (
                       <tr
                         key={result.networkAddress} // Assuming unique network address
                         className={`${
-                          result.networkAddress.length % 2 === 0
-                            ? "bg-teal-200"
-                            : "bg-teal-100"
+                          index % 2 === 0 ? "bg-teal-200" : "bg-teal-100"
                         }`}
                       >
                         <td className="py-4 px-6 sm:px-4 border-b text-lg text-gray-800">
