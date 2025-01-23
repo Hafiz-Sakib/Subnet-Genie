@@ -83,7 +83,7 @@ const VLSMPage = () => {
       navigate("/vlsm-results", { state: { results } });
     } catch (error) {
       alert(error.message);
-      navigate("/vlsm-form");
+      navigate("/");
     }
   }, [location.state, navigate]);
 
