@@ -54,7 +54,7 @@ const VLSMPage = () => {
             subnetMask,
             networkAddress: toDottedDecimal(networkAddress),
             broadcastAddress: toDottedDecimal(broadcastAddress),
-            usableRange: `${toDottedDecimal(firstHost)} - ${toDottedDecimal(
+            usableRange: `${toDottedDecimal(firstHost)} --- ${toDottedDecimal(
               lastHost
             )}`,
           });
