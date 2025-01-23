@@ -62,9 +62,10 @@ const VLSMPage = () => {
             wildcardMask: toWildcardMask(subnetMaskPrefix),
             networkAddress: toDottedDecimal(networkAddress),
             broadcastAddress: toDottedDecimal(broadcastAddress),
-            usableRange: `${toDottedDecimal(firstHost)} ↔️ ${toDottedDecimal(
-              lastHost
-            )}`,
+            usableRange: `
+            ${toDottedDecimal(firstHost)} 
+            ↔️
+            ${toDottedDecimal(lastHost)}`,
           });
 
           currentIP += subnetSize; // Move to the next available network address
