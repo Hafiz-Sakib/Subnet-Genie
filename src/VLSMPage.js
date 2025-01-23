@@ -80,7 +80,6 @@ const VLSMPage = () => {
         parseInt(originalMask, 10),
         hostRequirements
       );
-      console.log("Navigating with results:", results);
       navigate("/vlsm-results", { state: { results } });
     } catch (error) {
       alert(error.message);
