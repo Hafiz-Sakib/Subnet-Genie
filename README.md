@@ -19,7 +19,7 @@
 
 ## 🚀 Features
 
-- Calculate **Network Address**, **Subnet Mask**, **Broadcast Address**, and **Usable Host Range** for both **FLSM** and **VLSM** methods.
+- Calculate **Network Address**, **Subnet Mask**,**WildCard mask**, **Broadcast Address**, and **Usable Host Range** for both **FLSM** and **VLSM** methods.
 - **User-friendly interface** for easy input and output.
 
 ---
