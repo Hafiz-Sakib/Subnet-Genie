@@ -2,6 +2,14 @@
 
 Subnet Genie is a ReactJS application that allows users to calculate subnets using both the FLSM (Fixed-length subnet mask) and VLSM (Variable-length subnet mask) methods. It provides a user-friendly interface for entering network address and CIDR prefix length, and displays the calculated subnet mask, broadcast address, usable host range, and wildcard mask for both FLSM and VLSM methods.
 
+---
+
+## Demo
+
+![Website Demo](https://i.postimg.cc/2y8NkDyX/webpage.png)
+
+---
+
 ## Technologies Used
 
 - **Frontend:** React.js
@@ -27,11 +35,11 @@ You will need to have Node.js and npm (or yarn) installed on your system. You ca
 1. Clone the repository:
 
 ```bash
-git clone [https://your-github-repo-url.git](https://your-github-repo-url.git)
+git clone [https://your-github-repo-url.git](https://github.com/Hafiz-Sakib/Subnet-Genie.git)
 ```
 
 npm install
-```(or`yarn install`)
+`` (or`yarn install`) ``
 
 ## Running the application
 
