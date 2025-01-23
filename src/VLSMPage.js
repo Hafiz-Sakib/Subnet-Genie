@@ -66,9 +66,21 @@ const VLSMPage = () => {
         const firstHost = networkAddress + 1;
         const lastHost = broadcastAddress - 1;
 
+        // Convert subnet mask CIDR to decimal format
+        const subnetMaskDecimal = intToIP(
+          (0xffffffff << (32 - subnet.allocatedMask)) >>> 0
+        );
+
+        // Calculate wildcard mask (inverse of subnet mask)
+        const wildcardMask = intToIP(
+          ~((0xffffffff << (32 - subnet.allocatedMask)) >>> 0)
+        );
+
         results.push({
           requiredHosts: subnet.requiredHosts,
           subnetMaskCIDR: `${subnet.allocatedMask}`,
+          subnetMaskDecimal: subnetMaskDecimal,
+          wildcardMask: wildcardMask,
           networkAddress: intToIP(networkAddress),
           broadcastAddress: intToIP(broadcastAddress),
           usableRange: `${intToIP(firstHost)} ↔️ ${intToIP(lastHost)}`,
