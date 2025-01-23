@@ -52,7 +52,7 @@ const VLSMResults = () => {
                     </p>
                     <p>
                       <strong>Broadcast Address:</strong>{" "}
-                      {result.broadcastAddress}
+                      {result.broadcastAddress}/{result.subnetMaskCIDR}
                     </p>
                     <p>
                       <strong>Usable IP Range:</strong> {result.usableRange}
@@ -109,7 +109,7 @@ const VLSMResults = () => {
                           {result.wildcardMask}
                         </td>
                         <td className="py-4 px-6 sm:px-4 border-b text-lg text-gray-800">
-                          {result.broadcastAddress}
+                          {result.broadcastAddress}/{result.subnetMaskCIDR}
                         </td>
                         <td className="py-4 px-6 sm:px-4 border-b text-lg text-gray-800">
                           {result.usableRange}
