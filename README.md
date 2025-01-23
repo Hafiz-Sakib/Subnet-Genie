@@ -17,7 +17,7 @@ Subnet Genie is a ReactJS application that allows users to calculate subnets usi
 
 ## Features
 
-- Calculate subnet mask, broadcast address, usable host range, and wildcard mask for FLSM and VLSM methods.
+- Calculate Network Address,Subnet Mask, Broadcast Address, Usable Host Range for FLSM and VLSM methods.
 - User-friendly interface for easy input and output.
 
 ## Installation
