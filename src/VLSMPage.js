@@ -16,71 +16,77 @@ const VLSMPage = () => {
 
     const { baseIP, originalMask, hostRequirements } = location.state;
 
-    // Function to calculate the VLSM subnets
+    // Function to convert integer to dotted decimal format
+    const intToIP = (ip) => {
+      return (
+        ((ip >> 24) & 0xff) +
+        "." +
+        ((ip >> 16) & 0xff) +
+        "." +
+        ((ip >> 8) & 0xff) +
+        "." +
+        (ip & 0xff)
+      );
+    };
+
+    // Function to align the IP address with the subnet mask
+    const alignToNetwork = (ip, mask) => {
+      return ip & (0xffffffff << (32 - mask));
+    };
+
+    // Function to calculate VLSM
     const calculateVLSM = (baseIP, originalMask, hostRequirements) => {
       const results = [];
-      const toDecimalIP = (ip) =>
-        ip
-          .split(".")
-          .reduce(
-            (acc, octet, index) =>
-              acc + (parseInt(octet, 10) << ((3 - index) * 8)),
-            0
+      const subnets = hostRequirements.map((hosts) => ({
+        requiredHosts: hosts,
+        allocatedMask: 0,
+        networkAddress: 0,
+      }));
+
+      subnets.sort((a, b) => b.requiredHosts - a.requiredHosts);
+
+      let currentIP = baseIP;
+
+      subnets.forEach((subnet) => {
+        const neededBits = Math.ceil(Math.log2(subnet.requiredHosts + 2)); // +2 for network & broadcast
+        subnet.allocatedMask = 32 - neededBits;
+
+        if (subnet.allocatedMask < originalMask) {
+          throw new Error(
+            `Not enough address space for ${subnet.requiredHosts} hosts!`
           );
+        }
 
-      const toDottedDecimal = (ip) =>
-        [24, 16, 8, 0].map((shift) => (ip >> shift) & 255).join(".");
+        subnet.networkAddress = currentIP;
+        const subnetSize = 1 << (32 - subnet.allocatedMask);
+        currentIP += subnetSize;
 
-      const toSubnetMask = (prefixLength) =>
-        toDottedDecimal(~((1 << (32 - prefixLength)) - 1) >>> 0);
+        const networkAddress = subnet.networkAddress;
+        const broadcastAddress = networkAddress + subnetSize - 1;
+        const firstHost = networkAddress + 1;
+        const lastHost = broadcastAddress - 1;
 
-      const toWildcardMask = (prefixLength) =>
-        toDottedDecimal((1 << (32 - prefixLength)) - 1);
-
-      let currentIP = toDecimalIP(baseIP);
-
-      hostRequirements
-        .sort((a, b) => b - a) // Sort host requirements in descending order
-        .forEach((hosts) => {
-          const neededBits = Math.ceil(Math.log2(hosts + 2)); // +2 for network & broadcast
-          const subnetMaskPrefix = 32 - neededBits;
-
-          if (subnetMaskPrefix < originalMask) {
-            throw new Error(`Not enough address space for ${hosts} hosts!`);
-          }
-
-          const subnetSize = 1 << (32 - subnetMaskPrefix);
-          const networkAddress = currentIP;
-          const broadcastAddress = networkAddress + subnetSize - 1;
-          const firstHost = networkAddress + 1;
-          const lastHost = broadcastAddress - 1;
-
-          results.push({
-            requiredHosts: hosts,
-            subnetMaskCIDR: `${subnetMaskPrefix}`,
-            subnetMaskDecimal: toSubnetMask(subnetMaskPrefix),
-            wildcardMask: toWildcardMask(subnetMaskPrefix),
-            networkAddress: toDottedDecimal(networkAddress),
-            broadcastAddress: toDottedDecimal(broadcastAddress),
-            usableRange: `
-            ${toDottedDecimal(firstHost)} 
-            ↔️
-            ${toDottedDecimal(lastHost)}`,
-          });
-
-          currentIP += subnetSize; // Move to the next available network address
+        results.push({
+          requiredHosts: subnet.requiredHosts,
+          subnetMaskCIDR: `${subnet.allocatedMask}`,
+          networkAddress: intToIP(networkAddress),
+          broadcastAddress: intToIP(broadcastAddress),
+          usableRange: `${intToIP(firstHost)} ↔️ ${intToIP(lastHost)}`,
         });
+      });
 
       return results;
     };
 
-    // Run the algorithm and navigate to the results page
     try {
-      const results = calculateVLSM(
-        baseIP,
-        parseInt(originalMask, 10),
-        hostRequirements
-      );
+      // Convert base IP to 32-bit integer and align with the network block
+      const octets = baseIP.split(".").map((octet) => parseInt(octet));
+      let baseIPInt =
+        (octets[0] << 24) | (octets[1] << 16) | (octets[2] << 8) | octets[3];
+      baseIPInt = alignToNetwork(baseIPInt, originalMask);
+
+      // Perform VLSM calculation
+      const results = calculateVLSM(baseIPInt, originalMask, hostRequirements);
       navigate("/vlsm-results", { state: { results } });
     } catch (error) {
       alert(error.message);
