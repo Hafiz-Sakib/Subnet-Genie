@@ -31,19 +31,22 @@ const VLSMPage = () => {
       const toDottedDecimal = (ip) =>
         [24, 16, 8, 0].map((shift) => (ip >> shift) & 255).join(".");
 
+      const toSubnetMask = (prefixLength) =>
+        toDottedDecimal(~((1 << (32 - prefixLength)) - 1) >>> 0);
+
       let currentIP = toDecimalIP(baseIP);
 
       hostRequirements
         .sort((a, b) => b - a) // Sort host requirements in descending order
         .forEach((hosts) => {
           const neededBits = Math.ceil(Math.log2(hosts + 2)); // +2 for network & broadcast
-          const subnetMask = 32 - neededBits;
+          const subnetMaskPrefix = 32 - neededBits;
 
-          if (subnetMask < originalMask) {
+          if (subnetMaskPrefix < originalMask) {
             throw new Error(`Not enough address space for ${hosts} hosts!`);
           }
 
-          const subnetSize = 1 << (32 - subnetMask);
+          const subnetSize = 1 << (32 - subnetMaskPrefix);
           const networkAddress = currentIP;
           const broadcastAddress = networkAddress + subnetSize - 1;
           const firstHost = networkAddress + 1;
@@ -51,10 +54,11 @@ const VLSMPage = () => {
 
           results.push({
             requiredHosts: hosts,
-            subnetMask,
+            subnetMaskCIDR: `${subnetMaskPrefix}`,
+            subnetMaskDecimal: toSubnetMask(subnetMaskPrefix),
             networkAddress: toDottedDecimal(networkAddress),
             broadcastAddress: toDottedDecimal(broadcastAddress),
-            usableRange: `${toDottedDecimal(firstHost)} --- ${toDottedDecimal(
+            usableRange: `${toDottedDecimal(firstHost)} ↔️ ${toDottedDecimal(
               lastHost
             )}`,
           });

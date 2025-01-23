@@ -40,10 +40,12 @@ const VLSMResults = () => {
                       Subnet: {result.requiredHosts} Hosts
                     </h3>
                     <p>
-                      <strong>Subnet Mask:</strong> /{result.subnetMask}
+                      <strong>Network Address:</strong> {result.networkAddress}/
+                      {result.subnetMaskCIDR}
                     </p>
                     <p>
-                      <strong>Network Address:</strong> {result.networkAddress}
+                      <strong>Subnet Mask:</strong>
+                      {result.subnetMaskDecimal}
                     </p>
                     <p>
                       <strong>Broadcast Address:</strong>{" "}
@@ -63,9 +65,6 @@ const VLSMResults = () => {
                 <table className="min-w-full bg-white border-collapse table-auto">
                   <thead>
                     <tr className="bg-gray-100 text-left">
-                      <th className="py-4 px-6 sm:px-4 border-b text-lg font-semibold text-gray-800">
-                        Subnet
-                      </th>
                       <th className="py-4 px-6 sm:px-4 border-b text-lg font-semibold text-gray-800">
                         Required Hosts
                       </th>
@@ -92,16 +91,13 @@ const VLSMResults = () => {
                         }`}
                       >
                         <td className="py-4 px-6 sm:px-4 border-b text-lg text-gray-800">
-                          Subnet
-                        </td>
-                        <td className="py-4 px-6 sm:px-4 border-b text-lg text-gray-800">
                           {result.requiredHosts}
                         </td>
                         <td className="py-4 px-6 sm:px-4 border-b text-lg text-gray-800">
-                          {result.networkAddress}
+                          {result.networkAddress}/{result.subnetMaskCIDR}
                         </td>
                         <td className="py-4 px-6 sm:px-4 border-b text-lg text-gray-800">
-                          /{result.subnetMask}
+                          {result.subnetMaskDecimal}
                         </td>
                         <td className="py-4 px-6 sm:px-4 border-b text-lg text-gray-800">
                           {result.broadcastAddress}
