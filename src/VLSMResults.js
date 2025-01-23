@@ -9,11 +9,13 @@ const VLSMResults = () => {
   const [subnetResults, setSubnetResults] = useState([]);
 
   useEffect(() => {
-    // Update the state with the results from the previous page
     if (results) {
       setSubnetResults(results);
+    } else {
+      // Handle case where results are missing
+      setSubnetResults([]);
     }
-  }, [results]); // Re-run when the results change
+  }, [results]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white p-6">
@@ -27,13 +29,13 @@ const VLSMResults = () => {
             {/* Mobile Card View */}
             <div className="sm:hidden">
               <div className="grid grid-cols-1 gap-6">
-                {subnetResults.map((result, index) => (
+                {subnetResults.map((result) => (
                   <div
-                    key={index}
+                    key={result.networkAddress} // Assuming unique network address
                     className="p-6 rounded-lg bg-teal-500 text-white"
                   >
                     <h3 className="text-2xl font-semibold mb-4">
-                      Subnet {index + 1}: {result.requiredHosts} Hosts
+                      Subnet: {result.requiredHosts} Hosts
                     </h3>
                     <p>
                       <strong>Subnet Mask:</strong> /{result.subnetMask}
@@ -80,15 +82,17 @@ const VLSMResults = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {subnetResults.map((result, index) => (
+                    {subnetResults.map((result) => (
                       <tr
-                        key={index}
+                        key={result.networkAddress} // Assuming unique network address
                         className={`${
-                          index % 2 === 0 ? "bg-teal-100" : "bg-teal-200"
+                          result.networkAddress.length % 2 === 0
+                            ? "bg-teal-100"
+                            : "bg-teal-200"
                         }`}
                       >
                         <td className="py-4 px-6 sm:px-4 border-b text-lg text-gray-800">
-                          Subnet {index + 1}
+                          Subnet
                         </td>
                         <td className="py-4 px-6 sm:px-4 border-b text-lg text-gray-800">
                           {result.requiredHosts}
