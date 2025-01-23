@@ -72,7 +72,7 @@ function NormalSubnetForm() {
               onChange={(e) => setOriginalMask(e.target.value)}
               placeholder="e.g., 24"
               required
-              className="w-full px-4 py-3 border border-black rounded-lg bg-transparent text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-black rounded-lg bg-transparent text-black placeholder-black focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
           <div>
