@@ -26,7 +26,7 @@ function NormalSubnetResult() {
     <div className="min-h-screen flex items-center justify-center bg-white p-6">
       <div className="max-w-6xl w-full p-8 rounded-lg shadow-2xl bg-white">
         <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">
-          Subnet Calculation Results
+          FLSM Subnet Calculation Results
         </h2>
 
         {subnets.length > 0 ? (

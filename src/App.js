@@ -13,7 +13,7 @@ function App() {
             to="/normal-subnet"
             className="block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
           >
-            Normal Subnet Calculation
+            FLSM Subnet Calculation
           </Link>
           <Link
             to="/vlsm-subnet"

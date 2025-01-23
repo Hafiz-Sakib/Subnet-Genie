@@ -41,7 +41,7 @@ function NormalSubnetForm() {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white">
       <div className="max-w-xl mx-auto p-8 bg-white bg-opacity-20 rounded-lg shadow-lg backdrop-blur-lg space-y-6">
         <h2 className="text-3xl font-extrabold text-center tracking-wide text-black drop-shadow-lg">
-          Normal Subnet Calculation
+          FLSM Subnet Calculation
         </h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
