@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function NormalSubnetResult() {
   const [subnets, setSubnets] = useState([]);
+  const navigate = useNavigate();
 
   function getSubnetPrefixLength(subnetMask) {
     // Convert the subnet mask to binary form
@@ -16,6 +18,7 @@ function NormalSubnetResult() {
     let prefixLength = binarySubnetMask.split("1").length - 1;
     return prefixLength;
   }
+
   useEffect(() => {
     const result = JSON.parse(sessionStorage.getItem("subnets"));
     if (result) {
@@ -63,6 +66,16 @@ function NormalSubnetResult() {
       ) : (
         <p className="text-center text-gray-500">No results available.</p>
       )}
+
+      {/* Calculate Again Button */}
+      <div className="text-center mt-8">
+        <button
+          onClick={() => navigate("/normal-subnet")}
+          className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600"
+        >
+          Calculate Again
+        </button>
+      </div>
     </div>
   );
 }
