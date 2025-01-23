@@ -34,6 +34,9 @@ const VLSMPage = () => {
       const toSubnetMask = (prefixLength) =>
         toDottedDecimal(~((1 << (32 - prefixLength)) - 1) >>> 0);
 
+      const toWildcardMask = (prefixLength) =>
+        toDottedDecimal((1 << (32 - prefixLength)) - 1);
+
       let currentIP = toDecimalIP(baseIP);
 
       hostRequirements
@@ -56,6 +59,7 @@ const VLSMPage = () => {
             requiredHosts: hosts,
             subnetMaskCIDR: `${subnetMaskPrefix}`,
             subnetMaskDecimal: toSubnetMask(subnetMaskPrefix),
+            wildcardMask: toWildcardMask(subnetMaskPrefix),
             networkAddress: toDottedDecimal(networkAddress),
             broadcastAddress: toDottedDecimal(broadcastAddress),
             usableRange: `${toDottedDecimal(firstHost)} ↔️ ${toDottedDecimal(
