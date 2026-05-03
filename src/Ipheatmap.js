@@ -101,6 +101,7 @@ export default function IPHeatmap() {
   const displaySize = parsed ? Math.min(parsed.size, 256) : 0;
   const cols = 16;
   const rows = Math.ceil(displaySize / cols);
+  void rows;
 
   const getColor = (type) =>
     ALLOCATION_TYPES.find((t) => t.key === type)?.color || "#1a2236";
@@ -358,7 +359,8 @@ export default function IPHeatmap() {
                   {parsed.size > 256 && (
                     <span style={{ color: "var(--orange)", marginLeft: 8 }}>
                       First 256 shown (/
-                      {parsed.pfx + Math.ceil(Math.log2(parsed.size / 256))}{" "}
+                      {parsed.pfx +
+                        Math.ceil(Math.log2(parsed.size / 256))}{" "}
                       view)
                     </span>
                   )}

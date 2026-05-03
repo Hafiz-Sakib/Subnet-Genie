@@ -65,7 +65,9 @@ function buildSubnetTree(baseIP, prefixLen, splits) {
     }
     return node;
   }
-  return buildNode(network, prefixLen, 0);
+  const root = buildNode(network, prefixLen, 0);
+  root.totalTreeSize = size;
+  return root;
 }
 
 function SubnetNode({
@@ -180,6 +182,7 @@ function Toast({ msg, onClose }) {
 }
 
 export default function SubnetVisualMap() {
+  const containerRef = useRef(null);
   const [baseIP, setBaseIP] = useState("10.0.0.0");
   const [prefix, setPrefix] = useState("16");
   const [splits, setSplits] = useState(3);
@@ -218,6 +221,7 @@ export default function SubnetVisualMap() {
 
   return (
     <div
+      ref={containerRef}
       className="page-wrapper"
       style={{ background: "var(--bg-deep)", minHeight: "100vh" }}
     >
