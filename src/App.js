@@ -139,6 +139,46 @@ const tools = [
       "Prefix optimization",
     ],
   },
+  {
+    to: "/subnet-visual-map",
+    icon: "🗺️",
+    color: "#ff6b6b",
+    bg: "rgba(255,107,107,0.1)",
+    border: "rgba(255,107,107,0.2)",
+    badge: "Visual",
+    badgeClass: "badge-red",
+    title: "Subnet Visual Map",
+    desc: "Visualize subnet allocations and network structure on an interactive map.",
+    features: ["Subnet layout", "Visual address blocks", "Easy comparison"],
+  },
+  {
+    to: "/ip-heatmap",
+    icon: "🔥",
+    color: "#f0932b",
+    bg: "rgba(240,147,43,0.1)",
+    border: "rgba(240,147,43,0.2)",
+    badge: "Heatmap",
+    badgeClass: "badge-orange",
+    title: "IP Heatmap",
+    desc: "Analyze IP usage patterns with a heatmap view of network activity.",
+    features: ["Usage patterns", "Hotspot detection", "Visual analytics"],
+  },
+  {
+    to: "/subnet-comparison",
+    icon: "⚖️",
+    color: "#6c5ce7",
+    bg: "rgba(108,92,231,0.1)",
+    border: "rgba(108,92,231,0.2)",
+    badge: "Compare",
+    badgeClass: "badge-purple",
+    title: "Subnet Comparison",
+    desc: "Compare subnet sizes, host ranges, and efficiency side by side.",
+    features: [
+      "Side-by-side analysis",
+      "Host count comparison",
+      "Efficiency metrics",
+    ],
+  },
 ];
 
 function App() {
@@ -255,7 +295,7 @@ function App() {
           }}
         >
           {[
-            { label: "Tools Available", value: "10+" },
+            { label: "Tools Available", value: "13+" },
             { label: "IPv4 Support", value: "Full" },
             { label: "CIDR Notation", value: "Yes" },
             { label: "CSV Export", value: "Yes" },
