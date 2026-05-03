@@ -128,7 +128,7 @@ const VLSMResults = () => {
           ),
         )
       : 1;
-
+  console.log(maxSubnetSize);
   const palette = [
     "#fabd2f",
     "#06d6a0",
