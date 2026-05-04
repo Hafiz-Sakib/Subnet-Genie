@@ -4,7 +4,7 @@
 
 It includes FLSM and VLSM calculators, address and mask converters, visual subnet maps, subnet comparison tools, quizzes, and more.
 
-🔗 Live demo: https://subcalc-pro.vercel.app/
+🔗 Live demo: [SubCalc Pro](https://subcalc-pro.vercel.app/)
 
 ## 📸 Website Screenshot
 
