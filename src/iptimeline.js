@@ -416,10 +416,19 @@ export default function IPTimeline() {
                   className="input-field"
                   value={numSubnets}
                   onChange={(e) => setNumSubnets(+e.target.value)}
-                  style={{ cursor: "pointer" }}
+                  style={{
+                    cursor: "pointer",
+                    background: "#111827",
+                    color: "#f0f4ff",
+                    colorScheme: "dark",
+                  }}
                 >
                   {[1, 2, 3, 4, 5, 6].map((n) => (
-                    <option key={n} value={n}>
+                    <option
+                      key={n}
+                      value={n}
+                      style={{ background: "#111827", color: "#f0f4ff" }}
+                    >
                       {n} subnet{n > 1 ? "s" : ""}
                     </option>
                   ))}
@@ -431,10 +440,19 @@ export default function IPTimeline() {
                   className="input-field"
                   value={months}
                   onChange={(e) => setMonths(+e.target.value)}
-                  style={{ cursor: "pointer" }}
+                  style={{
+                    cursor: "pointer",
+                    background: "#111827",
+                    color: "#f0f4ff",
+                    colorScheme: "dark",
+                  }}
                 >
                   {[6, 12, 18, 24].map((m) => (
-                    <option key={m} value={m}>
+                    <option
+                      key={m}
+                      value={m}
+                      style={{ background: "#111827", color: "#f0f4ff" }}
+                    >
                       {m} months
                     </option>
                   ))}
@@ -485,10 +503,21 @@ export default function IPTimeline() {
                       onChange={(ev) =>
                         updateEntry(i, "month", ev.target.value)
                       }
-                      style={{ flex: "0 0 80px", cursor: "pointer" }}
+                      style={{
+                        flex: "0 0 80px",
+                        cursor: "pointer",
+                        background: "#111827",
+                        color: "#f0f4ff",
+                        colorScheme: "dark",
+                      }}
                     >
                       {MONTHS.map((m) => (
-                        <option key={m}>{m}</option>
+                        <option
+                          key={m}
+                          style={{ background: "#111827", color: "#f0f4ff" }}
+                        >
+                          {m}
+                        </option>
                       ))}
                     </select>
                     <input
