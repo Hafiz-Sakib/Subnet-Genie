@@ -7,17 +7,64 @@ function NavBar() {
     <nav className="nav-bar">
       <Link to="/" className="nav-logo">
         <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-          <rect x="1" y="1" width="9" height="9" rx="2" fill="#fabd2f" opacity="0.9" />
-          <rect x="12" y="1" width="9" height="9" rx="2" fill="#fabd2f" opacity="0.4" />
-          <rect x="1" y="12" width="9" height="9" rx="2" fill="#fabd2f" opacity="0.4" />
-          <rect x="12" y="12" width="9" height="9" rx="2" fill="#06d6a0" opacity="0.8" />
+          <rect
+            x="1"
+            y="1"
+            width="9"
+            height="9"
+            rx="2"
+            fill="#fabd2f"
+            opacity="0.9"
+          />
+          <rect
+            x="12"
+            y="1"
+            width="9"
+            height="9"
+            rx="2"
+            fill="#fabd2f"
+            opacity="0.4"
+          />
+          <rect
+            x="1"
+            y="12"
+            width="9"
+            height="9"
+            rx="2"
+            fill="#fabd2f"
+            opacity="0.4"
+          />
+          <rect
+            x="12"
+            y="12"
+            width="9"
+            height="9"
+            rx="2"
+            fill="#06d6a0"
+            opacity="0.8"
+          />
         </svg>
         Sub<span>Calc</span>
       </Link>
       <div className="nav-links">
-        <Link to="/" className={`nav-link ${location.pathname === "/" ? "active" : ""}`}>Home</Link>
-        <Link to="/normal-subnet" className={`nav-link ${location.pathname === "/normal-subnet" ? "active" : ""}`}>FLSM</Link>
-        <Link to="/vlsm-subnet" className={`nav-link ${location.pathname.includes("vlsm") ? "active" : ""}`}>VLSM</Link>
+        <Link
+          to="/"
+          className={`nav-link ${location.pathname === "/" ? "active" : ""}`}
+        >
+          Home
+        </Link>
+        <Link
+          to="/normal-subnet"
+          className={`nav-link ${location.pathname === "/normal-subnet" ? "active" : ""}`}
+        >
+          FLSM
+        </Link>
+        <Link
+          to="/vlsm-subnet"
+          className={`nav-link ${location.pathname.includes("vlsm") ? "active" : ""}`}
+        >
+          VLSM
+        </Link>
       </div>
     </nav>
   );
@@ -32,7 +79,8 @@ function App() {
         style={{
           width: "min(600px, 90vw)",
           height: "min(600px, 90vw)",
-          background: "radial-gradient(circle, rgba(250,189,47,0.12) 0%, transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(250,189,47,0.12) 0%, transparent 70%)",
           top: -200,
           right: -100,
           animation: "pulse-glow 6s ease-in-out infinite",
@@ -43,7 +91,8 @@ function App() {
         style={{
           width: "min(500px, 80vw)",
           height: "min(500px, 80vw)",
-          background: "radial-gradient(circle, rgba(6,214,160,0.08) 0%, transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(6,214,160,0.08) 0%, transparent 70%)",
           bottom: -100,
           left: -50,
           animation: "pulse-glow 8s ease-in-out infinite 2s",
@@ -96,7 +145,8 @@ function App() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
               gap: "clamp(12px, 3vw, 16px)",
               marginBottom: 20,
             }}
@@ -117,7 +167,8 @@ function App() {
                   right: 0,
                   width: 120,
                   height: 120,
-                  background: "radial-gradient(circle at top right, rgba(250,189,47,0.1), transparent 70%)",
+                  background:
+                    "radial-gradient(circle at top right, rgba(250,189,47,0.1), transparent 70%)",
                   borderRadius: "0 14px 0 0",
                 }}
               />
@@ -134,27 +185,83 @@ function App() {
                     marginBottom: 14,
                   }}
                 >
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fabd2f" strokeWidth="1.8">
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#fabd2f"
+                    strokeWidth="1.8"
+                  >
                     <rect x="3" y="3" width="18" height="18" rx="2" />
                     <path d="M3 9h18M9 21V9" />
                   </svg>
                 </div>
-                <span className="badge badge-gold" style={{ marginBottom: 10 }}>FLSM</span>
-                <h2 style={{ fontSize: "clamp(18px, 3.5vw, 24px)", fontWeight: 800, marginBottom: 8, fontFamily: "Syne, sans-serif" }}>
+                <span className="badge badge-gold" style={{ marginBottom: 10 }}>
+                  FLSM
+                </span>
+                <h2
+                  style={{
+                    fontSize: "clamp(18px, 3.5vw, 24px)",
+                    fontWeight: 800,
+                    marginBottom: 8,
+                    fontFamily: "Syne, sans-serif",
+                  }}
+                >
                   Fixed Length
                 </h2>
-                <p style={{ fontSize: "clamp(12px, 1.8vw, 13px)", color: "var(--text-secondary)", lineHeight: 1.7 }}>
-                  Divide a network into equal-sized subnets. Ideal for uniform host requirements across segments.
+                <p
+                  style={{
+                    fontSize: "clamp(12px, 1.8vw, 13px)",
+                    color: "var(--text-secondary)",
+                    lineHeight: 1.7,
+                  }}
+                >
+                  Divide a network into equal-sized subnets. Ideal for uniform
+                  host requirements across segments.
                 </p>
               </div>
-              <div style={{ marginBottom: 20, display: "flex", flexDirection: "column", gap: 6 }}>
-                {["Equal subnet sizes", "Simple to implement", "Predictable addressing"].map((f) => (
-                  <div key={f} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, color: "var(--text-secondary)" }}>
-                    <span style={{ color: "var(--gold)", fontSize: 14, flexShrink: 0 }}>✓</span> {f}
+              <div
+                style={{
+                  marginBottom: 20,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 6,
+                }}
+              >
+                {[
+                  "Equal subnet sizes",
+                  "Simple to implement",
+                  "Predictable addressing",
+                ].map((f) => (
+                  <div
+                    key={f}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 8,
+                      fontSize: 12,
+                      color: "var(--text-secondary)",
+                    }}
+                  >
+                    <span
+                      style={{
+                        color: "var(--gold)",
+                        fontSize: 14,
+                        flexShrink: 0,
+                      }}
+                    >
+                      ✓
+                    </span>{" "}
+                    {f}
                   </div>
                 ))}
               </div>
-              <Link to="/normal-subnet" className="btn-primary" style={{ display: "flex", textDecoration: "none" }}>
+              <Link
+                to="/normal-subnet"
+                className="btn-primary"
+                style={{ display: "flex", textDecoration: "none" }}
+              >
                 Open FLSM →
               </Link>
             </div>
@@ -176,7 +283,8 @@ function App() {
                   right: 0,
                   width: 120,
                   height: 120,
-                  background: "radial-gradient(circle at top right, rgba(6,214,160,0.08), transparent 70%)",
+                  background:
+                    "radial-gradient(circle at top right, rgba(6,214,160,0.08), transparent 70%)",
                   borderRadius: "0 14px 0 0",
                 }}
               />
@@ -193,22 +301,74 @@ function App() {
                     marginBottom: 14,
                   }}
                 >
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#06d6a0" strokeWidth="1.8">
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#06d6a0"
+                    strokeWidth="1.8"
+                  >
                     <path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z" />
                   </svg>
                 </div>
-                <span className="badge badge-cyan" style={{ marginBottom: 10 }}>VLSM</span>
-                <h2 style={{ fontSize: "clamp(18px, 3.5vw, 24px)", fontWeight: 800, marginBottom: 8, fontFamily: "Syne, sans-serif" }}>
+                <span className="badge badge-cyan" style={{ marginBottom: 10 }}>
+                  VLSM
+                </span>
+                <h2
+                  style={{
+                    fontSize: "clamp(18px, 3.5vw, 24px)",
+                    fontWeight: 800,
+                    marginBottom: 8,
+                    fontFamily: "Syne, sans-serif",
+                  }}
+                >
                   Variable Length
                 </h2>
-                <p style={{ fontSize: "clamp(12px, 1.8vw, 13px)", color: "var(--text-secondary)", lineHeight: 1.7 }}>
-                  Efficiently allocate different-sized subnets based on host requirements for each segment.
+                <p
+                  style={{
+                    fontSize: "clamp(12px, 1.8vw, 13px)",
+                    color: "var(--text-secondary)",
+                    lineHeight: 1.7,
+                  }}
+                >
+                  Efficiently allocate different-sized subnets based on host
+                  requirements for each segment.
                 </p>
               </div>
-              <div style={{ marginBottom: 20, display: "flex", flexDirection: "column", gap: 6 }}>
-                {["Optimized address space", "Flexible allocation", "Sorted by host need"].map((f) => (
-                  <div key={f} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, color: "var(--text-secondary)" }}>
-                    <span style={{ color: "var(--cyan)", fontSize: 14, flexShrink: 0 }}>✓</span> {f}
+              <div
+                style={{
+                  marginBottom: 20,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 6,
+                }}
+              >
+                {[
+                  "Optimized address space",
+                  "Flexible allocation",
+                  "Sorted by host need",
+                ].map((f) => (
+                  <div
+                    key={f}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 8,
+                      fontSize: 12,
+                      color: "var(--text-secondary)",
+                    }}
+                  >
+                    <span
+                      style={{
+                        color: "var(--cyan)",
+                        fontSize: 14,
+                        flexShrink: 0,
+                      }}
+                    >
+                      ✓
+                    </span>{" "}
+                    {f}
                   </div>
                 ))}
               </div>
@@ -252,7 +412,12 @@ function App() {
                 { label: "History Log", value: "Yes" },
               ].map(({ label, value }) => (
                 <div key={label} style={{ textAlign: "center" }}>
-                  <div className="stat-value" style={{ fontSize: "clamp(13px, 2.5vw, 18px)" }}>{value}</div>
+                  <div
+                    className="stat-value"
+                    style={{ fontSize: "clamp(13px, 2.5vw, 18px)" }}
+                  >
+                    {value}
+                  </div>
                   <div className="stat-label">{label}</div>
                 </div>
               ))}
@@ -263,7 +428,11 @@ function App() {
 
       <footer className="app-footer">
         Made with ♥ by{" "}
-        <a href="https://github.com/hafiz-sakib" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://github.com/hafiz-sakib"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Mohammad Hafizur Rahman Sakib
         </a>
       </footer>
