@@ -353,7 +353,7 @@ export default function NetworkTrafficChart() {
   const [metric, setMetric] = useState("bandwidth");
   const [live, setLive] = useState(false);
   const [tick, setTick] = useState(0);
-
+  console.log(tick);
   const generate = () => {
     setError("");
     if (!isValidCIDR(cidr)) {
