@@ -1,8 +1,16 @@
 # 🌐 Subnet Genie
 
-**Subnet Genie** is a responsive React application that provides a complete networking toolkit for IPv4 subnetting and IP analysis.
+**Subnet Genie** is a responsive React application that provides a complete networking toolkit for IPv4 subnetting, IP address analysis, and network planning.
 
 It includes FLSM and VLSM calculators, address and mask converters, visual subnet maps, subnet comparison tools, quizzes, and more.
+
+🔗 Live demo: https://subnet-genie.vercel.app/
+
+## 📸 Website Screenshot
+
+![Subnet Genie Screenshot](./src/asset%20for%20readme/screenshot.jpeg)
+
+> Add a screenshot image named `screenshot.png` in the project root or update the image path if you store it elsewhere.
 
 ---
 
