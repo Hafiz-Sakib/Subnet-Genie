@@ -1,10 +1,10 @@
-# 🌐 Subnet Genie
+# 🌐 SubCalc Pro
 
-**Subnet Genie** is a responsive React application that provides a complete networking toolkit for IPv4 subnetting, IP address analysis, and network planning.
+**SubCalc Pro** is a responsive React application that provides a complete networking toolkit for IPv4 subnetting, IP address analysis, and network planning.
 
 It includes FLSM and VLSM calculators, address and mask converters, visual subnet maps, subnet comparison tools, quizzes, and more.
 
-🔗 Live demo: https://subnet-genie.vercel.app/
+🔗 Live demo: https://subcalc-pro.vercel.app/
 
 ## 📸 Website Screenshot
 
