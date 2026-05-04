@@ -182,7 +182,12 @@ export default function IPHeatmap() {
       {toast && <Toast msg={toast} onClose={() => setToast("")} />}
 
       <div
-        style={{ maxWidth: 1100, margin: "0 auto", padding: "48px 24px 60px" }}
+        style={{
+          maxWidth: 1100,
+          margin: "0 auto",
+          padding:
+            "clamp(32px, 8vw, 48px) clamp(16px, 4vw, 24px) clamp(40px, 8vw, 60px)",
+        }}
       >
         <div className="animate-fadeInUp" style={{ marginBottom: 36 }}>
           <div className="section-tag">Visualization</div>
@@ -276,13 +281,7 @@ export default function IPHeatmap() {
         </div>
 
         {parsed && (
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 220px",
-              gap: 20,
-            }}
-          >
+          <div className="responsive-grid">
             {/* Main heatmap */}
             <div>
               {/* Paint tools */}

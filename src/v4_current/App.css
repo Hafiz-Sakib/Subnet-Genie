@@ -1391,3 +1391,16 @@ h4 {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Responsive grid for heatmap */
+.responsive-grid {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .responsive-grid {
+    grid-template-columns: 1fr;
+  }
+}
