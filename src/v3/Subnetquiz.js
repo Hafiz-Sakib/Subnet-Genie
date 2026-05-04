@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
-import NavBar from "./Navbar";
+import NavBar from "./NavBar";
 import "./App.css";
 
 function generateQuestions() {
@@ -741,16 +741,17 @@ export default function SubnetQuiz() {
             {q.q}
           </h2>
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-            {q.options.map((opt) => {
+            {q.options.map((opt, i) => {
               let cls = "quiz-option";
               if (selected !== null) {
                 if (opt === q.answer) cls += " correct";
                 else if (opt === selected && opt !== q.answer)
                   cls += " incorrect";
               }
+
               return (
                 <button
-                  key={opt}
+                  key={`${current}-${i}`} // ✅ FIXED
                   className={cls}
                   onClick={() => handleSelect(opt)}
                   disabled={selected !== null}
