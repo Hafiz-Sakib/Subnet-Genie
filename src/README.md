@@ -12,7 +12,7 @@ It includes FLSM and VLSM calculators, address and mask converters, visual subne
 
 ## ✨ Overview
 
-SubCalc Pro helps network engineers, students, and IT professionals:
+SubCalc Pro helps network engineers, students, and IT professionals to:
 
 - design and verify IPv4 subnets
 - calculate subnet ranges and masks
