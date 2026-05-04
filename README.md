@@ -10,10 +10,6 @@ It includes FLSM and VLSM calculators, address and mask converters, visual subne
 
 ![Subnet Genie Screenshot](./src/asset%20for%20readme/screenshot.jpeg)
 
-> Add a screenshot image named `screenshot.png` in the project root or update the image path if you store it elsewhere.
-
----
-
 ## ✨ Overview
 
 Subnet Genie helps network engineers, students, and IT professionals:
