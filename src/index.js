@@ -22,5 +22,5 @@ root.render(
       <Route path="/vlsm-page" element={<VLSMPage />} />
       <Route path="/vlsm-results" element={<VLSMResults />} />
     </Routes>
-  </Router>
+  </Router>,
 );
