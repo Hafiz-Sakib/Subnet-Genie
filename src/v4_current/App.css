@@ -1363,6 +1363,22 @@ h4 {
   }
 }
 
+/* ─── Form + History responsive grid (FLSM & VLSM) ─────────────────── */
+.form-history-grid {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 20px;
+  align-items: start;
+}
+
+/* When there is no history the single-column variant is applied inline,
+   but on mobile we always collapse to a single column regardless. */
+@media (max-width: 768px) {
+  .form-history-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ─── Print ─────────────────────────────────────────────────────────── */
 @media print {
   .nav-bar,

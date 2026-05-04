@@ -20,7 +20,7 @@ import SubnetVisualMap from "./Subnetvisualmap";
 import IPHeatmap from "./Ipheatmap";
 import Subnetcomparison from "./Subnetcomparison";
 import "./index.css";
-
+import "./App.css";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
