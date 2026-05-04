@@ -1,102 +1,166 @@
 # 🌐 Subnet Genie
 
-**Subnet Genie** is a ReactJS application that allows users to calculate subnets using both the **FLSM** (Fixed-Length Subnet Mask) and **VLSM** (Variable-Length Subnet Mask) methods. It provides a user-friendly interface for entering the network address and CIDR prefix length, and displays the calculated subnet mask, broadcast address, usable host range, and wildcard mask for both FLSM and VLSM methods.
+**Subnet Genie** is a responsive React application that provides a complete networking toolkit for IPv4 subnetting and IP analysis.
+
+It includes FLSM and VLSM calculators, address and mask converters, visual subnet maps, subnet comparison tools, quizzes, and more.
 
 ---
 
-## 🎥 Demo
+## ✨ Overview
 
-![Website Demo](./demo.png)
+Subnet Genie helps network engineers, students, and IT professionals:
 
----
+- design and verify IPv4 subnets
+- calculate subnet ranges and masks
+- compare network allocations
+- visualize subnet layouts
+- test subnetting knowledge
 
-## ⚙️ Technologies Used
-
-- **Frontend:** React.js
-- **Styling:** Tailwind CSS
-
----
-
-## 🚀 Features
-
-- Calculate **Network Address**, **Subnet Mask**,**WildCard mask**, **Broadcast Address**, and **Usable Host Range** for both **FLSM(Fixed Length Subnet Mask)** and **VLSM(Variable Length Subnet Mask)** methods.
-- **User-friendly interface** for easy input and output.
+The app is built with **React**, **React Router**, and **Tailwind CSS**.
 
 ---
 
-## 📥 Installation
+## 🚀 Available Tools
 
-### 🛠 Prerequisites
+The application currently includes the following tools and pages:
 
-You will need to have **Node.js** and **npm** (or **yarn**) installed on your system. You can download them from the following links:
+- **Fixed Length Subnetting (FLSM)**
+  - Divide a network into equal-sized subnets
+  - Calculate network address, broadcast address, mask, wildcard mask, and usable host range
 
-- **Node.js:** [Download Node.js](https://nodejs.org/en)
-- **npm:** (comes bundled with Node.js)
-- **yarn:** [Download Yarn](https://classic.yarnpkg.com/lang/en/docs/install/) (optional)
+- **Variable Length Subnetting (VLSM)**
+  - Allocate subnets based on different host requirements
+  - Keep space usage efficient by sorting subnets and assigning correct prefix sizes
+
+- **IP Address Analyzer**
+  - Identify IPv4 class (A/B/C/D/E)
+  - Detect private, public, and reserved address ranges
+  - Show binary, hexadecimal, and decimal conversions
+
+- **Binary Converter**
+  - Convert between binary and decimal IPv4 formats
+  - Support octet-level conversion and format visualization
+
+- **CIDR Range Expander**
+  - Expand a CIDR notation into network range, broadcast address, and host range
+  - Convert CIDR to mask and wildcard mask
+
+- **Wildcard Mask Tool**
+  - Convert subnet masks to wildcard masks and back
+  - Use results for access control lists (ACLs) and routing rules
+
+- **Subnet Overlap Detector**
+  - Verify whether multiple subnets overlap
+  - Prevent address plan conflicts in network design
+
+- **IP Class Identifier**
+  - Detect classful network categories and recommended masks
+  - Display default masks and usable host counts
+
+- **Subnet Quiz**
+  - Practice subnetting questions
+  - Challenge your knowledge with multiple question sets and scoring feedback
+
+- **Network Summary Tool**
+  - Aggregate multiple networks into a supernet
+  - Compare summarized subnet results, prefix optimization, and totals
+
+- **Subnet Visual Map**
+  - Visualize subnet splits and block allocations
+  - Click blocks to inspect network details and host ranges
+
+- **IP Heatmap**
+  - Analyze IP distribution and usage patterns visually
+  - Understand how IP blocks relate to heatmap density
+
+- **Subnet Comparison**
+  - Compare subnet sizes and host capacities side by side
+  - Review efficiency and address usage for multiple subnets
+
+- **Blog / Knowledge Base**
+  - Read networking-related content and subnetting guides
+  - Learn subnetting concepts directly within the app
 
 ---
 
-### Steps to Get Started
+## 🛠️ Technologies Used
 
-1. **Clone the repository:**
-
-```bash
-git clone https://github.com/Hafiz-Sakib/Subnet-Genie.git
-```
+- **React**
+- **React Router DOM**
+- **Tailwind CSS**
+- **React Scripts**
+- **PostCSS + Autoprefixer**
 
 ---
 
-### Install Dependencies ⚙️
+## 💻 Installation
 
-To install the necessary packages, use one of the following commands:
+### Prerequisites
 
-#### Using **npm**:
+You need **Node.js** and **npm** installed:
+
+- **Node.js:** https://nodejs.org
+- **npm:** bundled with Node.js
+
+### Install dependencies
 
 ```bash
 npm install
 ```
 
-#### Or using **yarn**:
-
-```bash
-yarn install
-```
-
 ---
 
-## 🏃‍♂️ Running the Application
-
-1. **Start the development server:**
+## ▶️ Run Locally
 
 ```bash
 npm start
 ```
 
-Or if using **yarn**:
+Then open [http://localhost:3000](http://localhost:3000).
+
+---
+
+## 📦 Build for Production
 
 ```bash
-yarn start
+npm run build
 ```
 
-2. Open [http://localhost:3000](http://localhost:3000) (or the port specified in `package.json`) in your web browser to view the application.
+This creates an optimized production build in the `build` folder.
+
+---
+
+## 🧪 Testing
+
+```bash
+npm test
+```
+
+---
+
+## 💡 Notes
+
+- The app is designed to be responsive across desktop, tablet, and mobile screens.
+- Navigation is handled using a modern sidebar/header menu with mobile-friendly hamburger navigation.
+- Many tools support copy-to-clipboard and compact summary displays for fast workflow.
 
 ---
 
 ## 🤝 Contributing
 
-We welcome contributions to this project! Here's how you can get involved:
+Contributions are welcome! To contribute:
 
-1. **Fork** the repository.
-2. **Create** a new branch for your feature or bug fix.
-3. **Make your changes** and commit them to your branch.
-4. **Open a pull request** from your branch to the main branch of this repository.
+1. Fork the repository.
+2. Create a branch for your change.
+3. Commit your updates.
+4. Open a pull request.
 
 ---
 
 ## 📄 License
 
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for more details.
+This project is licensed under the **MIT License**.
 
 ---
 
-<div align="center"> Made with ❤️ by Mohammad Hafizur Rahman Sakib </div>
+<div align="center">Made with ❤️ by Mohammad Hafizur Rahman Sakib</div>
