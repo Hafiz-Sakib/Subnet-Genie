@@ -1,78 +1,126 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
+import "./App.css";
 
-function NavBar() {
+const allLinks = [
+  { to: "/", label: "Home" },
+  { to: "/normal-subnet", label: "FLSM" },
+  { to: "/vlsm-subnet", label: "VLSM" },
+  { to: "/ip-info", label: "IP Info" },
+  { to: "/binary-converter", label: "Binary" },
+  { to: "/cidr-range", label: "CIDR" },
+  { to: "/wildcard-mask", label: "Wildcard" },
+  { to: "/overlap-detector", label: "Overlap" },
+  { to: "/ip-class", label: "IP Class" },
+  { to: "/subnet-quiz", label: "Quiz" },
+  { to: "/network-summary", label: "Summary" },
+  { to: "/subnet-visual-map", label: "Visual Map" },
+  { to: "/ip-heatmap", label: "Heatmap" },
+  { to: "/subnet-comparison", label: "Compare" },
+  { to: "/blog", label: "Blog" },
+];
+
+// Links shown in navbar on desktop; rest go in "More" dropdown
+const primaryLinks = allLinks.slice(0, 5);
+const moreLinks = allLinks.slice(5);
+
+export default function NavBar() {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
 
-  const links = [
-    { to: "/", label: "Home" },
-    { to: "/normal-subnet", label: "FLSM" },
-    { to: "/vlsm-subnet", label: "VLSM" },
-    { to: "/ip-info", label: "IP Info" },
-    { to: "/binary-converter", label: "Binary" },
-    { to: "/cidr-range", label: "CIDR" },
-    { to: "/wildcard-mask", label: "Wildcard" },
-    { to: "/overlap-detector", label: "Overlap" },
-    { to: "/ip-class", label: "IP Class" },
-    { to: "/network-summary", label: "Summary" },
-    { to: "/subnet-visual-map", label: "Visual Map" },
-    { to: "/ip-heatmap", label: "Heatmap" },
-    { to: "/subnet-comparison", label: "Compare" },
-    { to: "/subnet-quiz", label: "Quiz" },
-    { to: "/blog", label: "Blog" },
-  ];
-
-  useEffect(() => { setMenuOpen(false); }, [location.pathname]);
-
+  // Close menu on route change
   useEffect(() => {
-    if (!menuOpen) return;
+    setMenuOpen(false);
+  }, [location.pathname]);
+
+  // Close menu on outside click
+  useEffect(() => {
     const handler = (e) => {
-      if (menuRef.current && !menuRef.current.contains(e.target)) setMenuOpen(false);
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setMenuOpen(false);
+      }
     };
-    document.addEventListener("mousedown", handler);
+    if (menuOpen) document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, [menuOpen]);
 
+  // Prevent body scroll when menu open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [menuOpen]);
-
-  const isActive = (to) =>
-    to === "/" ? location.pathname === "/" : location.pathname.startsWith(to);
-
-  const desktopLinks = links.slice(0, 7);
-  const moreLinks = links.slice(7);
 
   return (
     <>
       <nav className="nav-bar" ref={menuRef}>
-        <Link to="/" className="nav-logo" onClick={() => setMenuOpen(false)}>
+        {/* Logo */}
+        <Link to="/" className="nav-logo">
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-            <rect x="1" y="1" width="9" height="9" rx="2" fill="#fabd2f" opacity="0.9" />
-            <rect x="12" y="1" width="9" height="9" rx="2" fill="#fabd2f" opacity="0.4" />
-            <rect x="1" y="12" width="9" height="9" rx="2" fill="#fabd2f" opacity="0.4" />
-            <rect x="12" y="12" width="9" height="9" rx="2" fill="#06d6a0" opacity="0.8" />
+            <rect
+              x="1"
+              y="1"
+              width="9"
+              height="9"
+              rx="2"
+              fill="#fabd2f"
+              opacity="0.9"
+            />
+            <rect
+              x="12"
+              y="1"
+              width="9"
+              height="9"
+              rx="2"
+              fill="#fabd2f"
+              opacity="0.4"
+            />
+            <rect
+              x="1"
+              y="12"
+              width="9"
+              height="9"
+              rx="2"
+              fill="#fabd2f"
+              opacity="0.4"
+            />
+            <rect
+              x="12"
+              y="12"
+              width="9"
+              height="9"
+              rx="2"
+              fill="#06d6a0"
+              opacity="0.8"
+            />
           </svg>
           Sub<span>Calc</span>
         </Link>
 
-        {/* Desktop nav */}
+        {/* Desktop links */}
         <div className="nav-links-desktop">
-          {desktopLinks.map(({ to, label }) => (
-            <Link key={to} to={to} className={`nav-link ${isActive(to) ? "active" : ""}`}>
+          {primaryLinks.map(({ to, label }) => (
+            <Link
+              key={to}
+              to={to}
+              className={`nav-link ${location.pathname === to ? "active" : ""}`}
+            >
               {label}
             </Link>
           ))}
+
+          {/* More dropdown */}
           <div className="nav-more-wrapper">
-            <button className="nav-link nav-more-btn" style={{ background: "none", border: "none", cursor: "pointer" }}>
-              More ▾
-            </button>
+            <button className="nav-more-btn">More ▾</button>
             <div className="nav-more-dropdown">
               {moreLinks.map(({ to, label }) => (
-                <Link key={to} to={to} className={`nav-more-item ${isActive(to) ? "active" : ""}`}>
+                <Link
+                  key={to}
+                  to={to}
+                  className={`nav-more-item ${location.pathname === to ? "active" : ""}`}
+                >
                   {label}
                 </Link>
               ))}
@@ -80,62 +128,163 @@ function NavBar() {
           </div>
         </div>
 
-        {/* Hamburger */}
+        {/* Hamburger button — shown on mobile/tablet */}
         <button
           className="nav-hamburger"
           onClick={() => setMenuOpen((o) => !o)}
-          aria-label="Toggle navigation menu"
+          aria-label="Toggle menu"
           aria-expanded={menuOpen}
         >
-          <span style={{ display: "block", width: 22, height: 2, background: menuOpen ? "var(--gold)" : "var(--text-secondary)", borderRadius: 2, transition: "all 0.3s", transform: menuOpen ? "rotate(45deg) translate(3px, 3px)" : "none" }} />
-          <span style={{ display: "block", width: 22, height: 2, background: menuOpen ? "transparent" : "var(--text-secondary)", borderRadius: 2, transition: "all 0.3s", margin: "5px 0" }} />
-          <span style={{ display: "block", width: 22, height: 2, background: menuOpen ? "var(--gold)" : "var(--text-secondary)", borderRadius: 2, transition: "all 0.3s", transform: menuOpen ? "rotate(-45deg) translate(3px, -3px)" : "none" }} />
+          <HamburgerIcon open={menuOpen} />
         </button>
       </nav>
 
-      {/* Overlay */}
+      {/* Mobile menu overlay */}
       {menuOpen && (
         <div
-          style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)", zIndex: 98 }}
+          className="nav-mobile-backdrop"
           onClick={() => setMenuOpen(false)}
         />
       )}
 
-      {/* Mobile Drawer */}
-      <div style={{
-        position: "fixed", top: 0, right: 0, height: "100vh", width: "min(300px, 85vw)",
-        background: "var(--bg-card)", borderLeft: "1px solid var(--border-subtle)",
-        zIndex: 99, transform: menuOpen ? "translateX(0)" : "translateX(100%)",
-        transition: "transform 0.35s cubic-bezier(0.4,0,0.2,1)",
-        display: "flex", flexDirection: "column", overflowY: "auto",
-        boxShadow: menuOpen ? "-20px 0 60px rgba(0,0,0,0.5)" : "none",
-      }}>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "20px 24px", borderBottom: "1px solid var(--border-subtle)" }}>
-          <span style={{ fontFamily: "Syne, sans-serif", fontSize: 14, fontWeight: 700, color: "var(--text-primary)" }}>Navigation</span>
-          <button onClick={() => setMenuOpen(false)} style={{ background: "rgba(255,255,255,0.06)", border: "1px solid var(--border-subtle)", borderRadius: 8, color: "var(--text-muted)", padding: "6px 10px", cursor: "pointer", fontSize: 14 }}>✕</button>
-        </div>
-        <div style={{ padding: "12px", display: "flex", flexDirection: "column", gap: 4 }}>
-          {links.map(({ to, label }) => (
+      {/* Mobile menu drawer */}
+      <div className={`nav-mobile-menu ${menuOpen ? "open" : ""}`}>
+        <div className="nav-mobile-inner">
+          <div className="nav-mobile-header">
             <Link
-              key={to}
-              to={to}
+              to="/"
+              className="nav-logo"
               onClick={() => setMenuOpen(false)}
-              style={{
-                display: "block", padding: "12px 16px", borderRadius: 10,
-                fontFamily: "Syne, sans-serif", fontSize: 13, fontWeight: 600,
-                color: isActive(to) ? "var(--gold)" : "var(--text-secondary)",
-                background: isActive(to) ? "var(--gold-dim)" : "transparent",
-                border: `1px solid ${isActive(to) ? "rgba(250,189,47,0.2)" : "transparent"}`,
-                textDecoration: "none", transition: "all 0.15s",
-              }}
             >
-              {label}
+              <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+                <rect
+                  x="1"
+                  y="1"
+                  width="9"
+                  height="9"
+                  rx="2"
+                  fill="#fabd2f"
+                  opacity="0.9"
+                />
+                <rect
+                  x="12"
+                  y="1"
+                  width="9"
+                  height="9"
+                  rx="2"
+                  fill="#fabd2f"
+                  opacity="0.4"
+                />
+                <rect
+                  x="1"
+                  y="12"
+                  width="9"
+                  height="9"
+                  rx="2"
+                  fill="#fabd2f"
+                  opacity="0.4"
+                />
+                <rect
+                  x="12"
+                  y="12"
+                  width="9"
+                  height="9"
+                  rx="2"
+                  fill="#06d6a0"
+                  opacity="0.8"
+                />
+              </svg>
+              Sub<span>Calc</span>
             </Link>
-          ))}
+            <button
+              className="nav-mobile-close"
+              onClick={() => setMenuOpen(false)}
+              aria-label="Close menu"
+            >
+              ✕
+            </button>
+          </div>
+
+          <div className="nav-mobile-links">
+            {allLinks.map(({ to, label }) => (
+              <Link
+                key={to}
+                to={to}
+                className={`nav-mobile-link ${location.pathname === to ? "active" : ""}`}
+                onClick={() => setMenuOpen(false)}
+              >
+                {label}
+                <span className="nav-mobile-arrow">→</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </>
   );
 }
 
-export default NavBar;
+function HamburgerIcon({ open }) {
+  return (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 22 22"
+      fill="none"
+      style={{ transition: "transform 0.2s" }}
+    >
+      {open ? (
+        <>
+          <line
+            x1="4"
+            y1="4"
+            x2="18"
+            y2="18"
+            stroke="var(--text-secondary)"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          <line
+            x1="18"
+            y1="4"
+            x2="4"
+            y2="18"
+            stroke="var(--text-secondary)"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+        </>
+      ) : (
+        <>
+          <line
+            x1="3"
+            y1="6"
+            x2="19"
+            y2="6"
+            stroke="var(--text-secondary)"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          <line
+            x1="3"
+            y1="11"
+            x2="19"
+            y2="11"
+            stroke="var(--text-secondary)"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          <line
+            x1="3"
+            y1="16"
+            x2="19"
+            y2="16"
+            stroke="var(--text-secondary)"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+        </>
+      )}
+    </svg>
+  );
+}

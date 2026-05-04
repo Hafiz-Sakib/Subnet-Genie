@@ -213,6 +213,7 @@ function App() {
       <NavBar />
 
       <div
+        className="page-content"
         style={{ maxWidth: 1100, margin: "0 auto", padding: "64px 24px 40px" }}
       >
         {/* Hero */}
@@ -248,6 +249,7 @@ function App() {
             analyzers, binary converters, overlap detection, quizzes, and more.
           </p>
           <div
+            className="hero-buttons"
             style={{
               display: "flex",
               gap: 12,
@@ -329,6 +331,7 @@ function App() {
         </div>
 
         <div
+          className="tool-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
