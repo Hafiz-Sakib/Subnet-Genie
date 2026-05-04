@@ -95,8 +95,6 @@ The application currently includes the following tools and pages:
 - **React Scripts**
 - **PostCSS + Autoprefixer**
 
----
-
 ## 💻 Installation
 
 ### Prerequisites
