@@ -213,6 +213,7 @@ export default function SubnetPieChart() {
 
   const applyPreset = (preset) => {
     const usable = result ? result.usable : 254;
+    console.log("Applying preset", preset, "with usable IPs:", usable);
     const presets = {
       office: {
         servers: 10,
