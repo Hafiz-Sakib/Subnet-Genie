@@ -18,6 +18,9 @@ const allLinks = [
   { to: "/ip-heatmap", label: "Heatmap" },
   { to: "/subnet-comparison", label: "Compare" },
   { to: "/blog", label: "Blog" },
+  { to: "/NetworkTrafficChart", label: "Traffic Chart" },
+  { to: "/SubnetPieChart", label: "Subnet Pie Chart" },
+  { to: "/iptimeline", label: "IP Timeline" },
 ];
 
 // Links shown in navbar on desktop; rest go in "More" dropdown

@@ -179,6 +179,42 @@ const tools = [
       "Efficiency metrics",
     ],
   },
+  {
+    to: "/NetworkTrafficChart",
+    icon: "📶",
+    color: "#74b9ff",
+    bg: "rgba(116,185,255,0.1)",
+    border: "rgba(116,185,255,0.2)",
+    badge: "Traffic",
+    badgeClass: "badge-blue",
+    title: "Network Traffic Chart",
+    desc: "Visualize network traffic patterns and bandwidth usage over time with interactive charts.",
+    features: ["Bandwidth trends", "Traffic analysis", "Interactive graph"],
+  },
+  {
+    to: "/SubnetPieChart",
+    icon: "🥧",
+    color: "#fd79a8",
+    bg: "rgba(253,121,168,0.1)",
+    border: "rgba(253,121,168,0.2)",
+    badge: "Pie Chart",
+    badgeClass: "badge-pink",
+    title: "Subnet Pie Chart",
+    desc: "Visualize subnet allocation and IP address distribution as an interactive pie chart.",
+    features: ["Allocation view", "IP distribution", "Interactive slices"],
+  },
+  {
+    to: "/iptimeline",
+    icon: "📅",
+    color: "#06d6a0",
+    bg: "rgba(6,214,160,0.1)",
+    border: "rgba(6,214,160,0.2)",
+    badge: "Timeline",
+    badgeClass: "badge-cyan",
+    title: "IP Timeline",
+    desc: "Track and visualize subnet utilization trends across time with a multi-series line chart.",
+    features: ["Utilization trends", "Multi-subnet view", "Hover inspection"],
+  },
 ];
 
 function App() {
@@ -297,7 +333,7 @@ function App() {
           }}
         >
           {[
-            { label: "Tools Available", value: "13+" },
+            { label: "Tools Available", value: "16+" },
             { label: "IPv4 Support", value: "Full" },
             { label: "CIDR Notation", value: "Yes" },
             { label: "CSV Export", value: "Yes" },
@@ -326,7 +362,7 @@ function App() {
               marginBottom: 32,
             }}
           >
-            10 professional networking tools in one place.
+            16 professional networking tools in one place.
           </p>
         </div>
 
