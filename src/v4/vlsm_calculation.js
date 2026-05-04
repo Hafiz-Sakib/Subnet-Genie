@@ -37,7 +37,7 @@ function calculateVLSM(baseIP, originalMask, hostRequirements) {
     // Check if the allocated mask exceeds the original mask
     if (subnet.allocatedMask < originalMask) {
       console.error(
-        `Error: Not enough address space for ${subnet.requiredHosts} hosts!`
+        `Error: Not enough address space for ${subnet.requiredHosts} hosts!`,
       );
       return;
     }
@@ -59,11 +59,11 @@ function calculateVLSM(baseIP, originalMask, hostRequirements) {
     console.log(`Subnet ${i + 1}:`);
     console.log(`  Required Hosts: ${subnet.requiredHosts}`);
     console.log(
-      `  Network Address: ${intToIP(networkAddress)}/${subnet.allocatedMask}`
+      `  Network Address: ${intToIP(networkAddress)}/${subnet.allocatedMask}`,
     );
     console.log(`  Broadcast Address: ${intToIP(broadcastAddress)}`);
     console.log(
-      `  Usable Host Range: ${intToIP(firstHost)} - ${intToIP(lastHost)}`
+      `  Usable Host Range: ${intToIP(firstHost)} - ${intToIP(lastHost)}`,
     );
     console.log("-------------------------------");
   });
@@ -74,6 +74,10 @@ const ip = "10.20.30.40"; // Base IP address
 const originalMask = 12; // Original subnet mask (e.g., /24)
 const numSubnets = 3; // Number of subnets
 
+console.log(
+  `Calculating VLSM for IP: ${ip}/${originalMask} with ${numSubnets} subnets...`,
+);
+
 // Host requirements for each subnet
 const hostRequirements = [1020, 512, 250]; // Example: 3 subnets with 100, 50, and 30 hosts
 
@@ -81,7 +85,7 @@ const hostRequirements = [1020, 512, 250]; // Example: 3 subnets with 100, 50, a
 const octets = ip.split(".").map((octet) => parseInt(octet));
 if (octets.length !== 4 || octets.some((octet) => octet < 0 || octet > 255)) {
   console.error(
-    "Invalid IP address format. Use dotted decimal (e.g., 192.168.1.0)."
+    "Invalid IP address format. Use dotted decimal (e.g., 192.168.1.0).",
   );
 } else {
   let baseIP =
