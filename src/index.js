@@ -21,6 +21,9 @@ import IPHeatmap from "./Ipheatmap";
 import Subnetcomparison from "./Subnetcomparison";
 import "./index.css";
 import "./App.css";
+import NetworkTrafficChart from "./NetworkTrafficChart";
+import SubnetPieChart from "./SubnetPieChart";
+import IPTimeline from "./iptimeline";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
@@ -44,6 +47,9 @@ root.render(
       <Route path="/subnet-visual-map" element={<SubnetVisualMap />} />
       <Route path="/ip-heatmap" element={<IPHeatmap />} />
       <Route path="/subnet-comparison" element={<Subnetcomparison />} />
+      <Route path="/NetworkTrafficChart" element={<NetworkTrafficChart />} />
+      <Route path="/SubnetPieChart" element={<SubnetPieChart />} />
+      <Route path="/iptimeline" element={<IPTimeline />} />
     </Routes>
   </Router>,
 );
