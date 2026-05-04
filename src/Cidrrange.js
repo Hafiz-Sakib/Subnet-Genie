@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import NavBar from "./Navbar";
+import NavBar from "./NavBar";
 import "./App.css";
 
 function isValidIP(ip) {
