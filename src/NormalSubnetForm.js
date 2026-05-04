@@ -124,7 +124,7 @@ function NormalSubnetForm() {
           <p style={{ fontSize: 13, color: 'var(--text-secondary)' }}>Divide a network into equal-sized subnets with uniform prefix length.</p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: history.length > 0 ? '1fr 240px' : '1fr', gap: 20, alignItems: 'start' }}>
+        <div className={history.length > 0 ? 'form-history-grid' : ''}>
           {/* Form */}
           <div className="card animate-fadeInUp stagger-1" style={{ padding: 32 }}>
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
