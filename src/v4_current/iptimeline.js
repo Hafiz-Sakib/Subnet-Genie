@@ -846,17 +846,6 @@ export default function IPTimeline() {
           >
             ← Home
           </Link>
-          <Link
-            to="/subnet-efficiency"
-            className="btn-secondary"
-            style={{
-              textDecoration: "none",
-              display: "inline-flex",
-              alignItems: "center",
-            }}
-          >
-            Efficiency Chart →
-          </Link>
         </div>
       </div>
 

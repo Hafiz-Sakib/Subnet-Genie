@@ -705,6 +705,17 @@ export default function SubnetComparison() {
           >
             ← Home
           </Link>
+          <Link
+            to="/NetworkTrafficChart"
+            className="btn-secondary"
+            style={{
+              textDecoration: "none",
+              display: "inline-flex",
+              alignItems: "center",
+            }}
+          >
+            Network Traffic Chart→
+          </Link>
         </div>
       </div>
 

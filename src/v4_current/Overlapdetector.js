@@ -482,7 +482,7 @@ export default function OverlapDetector() {
               alignItems: "center",
             }}
           >
-            IP Class →
+            IP Class Identifier →
           </Link>
         </div>
       </div>

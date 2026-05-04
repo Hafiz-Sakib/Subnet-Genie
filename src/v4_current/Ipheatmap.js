@@ -624,7 +624,7 @@ export default function IPHeatmap() {
             ← Home
           </Link>
           <Link
-            to="/subnet-visual-map"
+            to="/subnet-comparison"
             className="btn-secondary"
             style={{
               textDecoration: "none",
@@ -632,7 +632,7 @@ export default function IPHeatmap() {
               alignItems: "center",
             }}
           >
-            Visual Map →
+            Subnet Comparison→
           </Link>
         </div>
       </div>
