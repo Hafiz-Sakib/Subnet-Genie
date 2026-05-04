@@ -499,7 +499,7 @@ export default function NetworkSummary() {
             ← Home
           </Link>
           <Link
-            to="/vlsm-subnet"
+            to="/subnet-visual-map"
             className="btn-secondary"
             style={{
               textDecoration: "none",
@@ -507,7 +507,7 @@ export default function NetworkSummary() {
               alignItems: "center",
             }}
           >
-            VLSM →
+            Subnet Visual Map →
           </Link>
         </div>
       </div>

@@ -622,7 +622,7 @@ export default function SubnetPieChart() {
             ← Home
           </Link>
           <Link
-            to="/network-traffic"
+            to="/iptimeline"
             className="btn-secondary"
             style={{
               textDecoration: "none",
@@ -630,7 +630,7 @@ export default function SubnetPieChart() {
               alignItems: "center",
             }}
           >
-            Traffic Chart →
+            IP Timeline →
           </Link>
         </div>
       </div>

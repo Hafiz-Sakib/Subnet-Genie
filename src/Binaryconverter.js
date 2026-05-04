@@ -539,7 +539,7 @@ export default function BinaryConverter() {
             ← Home
           </Link>
           <Link
-            to="/ip-info"
+            to="/cidr-range"
             className="btn-secondary"
             style={{
               textDecoration: "none",
@@ -547,7 +547,7 @@ export default function BinaryConverter() {
               alignItems: "center",
             }}
           >
-            IP Analyzer →
+            CIDR Range Expander →
           </Link>
         </div>
       </div>
