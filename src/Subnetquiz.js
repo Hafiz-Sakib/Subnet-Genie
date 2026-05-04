@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
-import NavBar from "./NavBar";
+import NavBar from "./Navbar";
 import "./App.css";
 
 function generateQuestions() {
@@ -47,13 +47,6 @@ function generateQuestions() {
   });
 
   // Q3: Network address
-  const ips = [
-    "192.168.1.130/26",
-    "10.0.1.200/24",
-    "172.16.5.100/20",
-    "192.168.10.67/27",
-  ];
-  console.log("Generating network address question from IPs:", ips);
   const ipData = [
     {
       input: "192.168.1.130/26",

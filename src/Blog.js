@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import NavBar from "./NavBar";
+import NavBar from "./Navbar";
 import "./App.css";
 
 const ARTICLES = [
@@ -12,8 +12,7 @@ const ARTICLES = [
     badge: "badge-gold",
     readTime: "8 min",
     date: "Apr 12, 2025",
-    summary:
-      "Subnetting divides a large IP network into smaller, more manageable segments. Learn why this matters and how to calculate subnets by hand.",
+    summary: "Subnetting divides a large IP network into smaller, more manageable segments. Learn why this matters and how to calculate subnets by hand.",
     content: `
 Subnetting is one of the most fundamental skills in networking. At its core, subnetting means dividing a large IP address space into smaller, logical sub-networks called subnets.
 
@@ -62,8 +61,7 @@ Mastering these basics will make VLSM, routing protocols, and firewall ACLs much
     badge: "badge-cyan",
     readTime: "10 min",
     date: "Apr 18, 2025",
-    summary:
-      "Variable Length Subnet Masking (VLSM) allows networks of different sizes within the same address space. Here's how to plan and implement it correctly.",
+    summary: "Variable Length Subnet Masking (VLSM) allows networks of different sizes within the same address space. Here's how to plan and implement it correctly.",
     content: `
 Variable Length Subnet Masking (VLSM) is the answer to a simple problem: not every subnet needs the same number of hosts. FLSM wastes addresses; VLSM wastes nothing.
 
@@ -114,8 +112,7 @@ VLSM requires classless routing protocols (RIP v2, OSPF, EIGRP, BGP) that carry 
     badge: "badge-pink",
     readTime: "7 min",
     date: "Apr 25, 2025",
-    summary:
-      "Classful addressing wasted billions of IP addresses. CIDR changed everything. Understand how prefix notation works and why it's the foundation of modern routing.",
+    summary: "Classful addressing wasted billions of IP addresses. CIDR changed everything. Understand how prefix notation works and why it's the foundation of modern routing.",
     content: `
 Before 1993, the internet used classful addressing: Class A (8-bit prefix), Class B (16-bit), Class C (24-bit). If you needed 300 hosts, you got a Class B with 65,534 addresses — an enormous waste.
 
@@ -156,8 +153,7 @@ Every BGP router on the internet uses CIDR. The global routing table contains ~9
     badge: "badge-purple",
     readTime: "6 min",
     date: "May 2, 2025",
-    summary:
-      "RFC 1918 defines three private address ranges that power almost every LAN on earth. Learn the ranges, why they exist, and how NAT makes them work with the public internet.",
+    summary: "RFC 1918 defines three private address ranges that power almost every LAN on earth. Learn the ranges, why they exist, and how NAT makes them work with the public internet.",
     content: `
 The IPv4 address space was never large enough for every device on earth to have a public address. RFC 1918, published in 1996, solved this problem by designating three ranges as "private" — never routed on the public internet.
 
@@ -195,8 +191,7 @@ RFC 6598 defined 100.64.0.0/10 as "Shared Address Space" for Carrier-Grade NAT (
     badge: "badge-orange",
     readTime: "9 min",
     date: "May 8, 2025",
-    summary:
-      "Wildcard masks are the inverse of subnet masks and are essential for writing Cisco ACLs and OSPF network statements. Master them with clear examples.",
+    summary: "Wildcard masks are the inverse of subnet masks and are essential for writing Cisco ACLs and OSPF network statements. Master them with clear examples.",
     content: `
 Wildcard masks trip up many network engineers because they work backwards from subnet masks. A 0 bit means "must match" and a 1 bit means "any value is OK."
 
@@ -251,8 +246,7 @@ This includes all interfaces in the 192.168.0.0/16 range in area 0.
     badge: "badge-blue",
     readTime: "11 min",
     date: "May 14, 2025",
-    summary:
-      "IPv6 has 340 undecillion addresses. Subnetting works differently — and in many ways more simply. Here's what network engineers need to know when transitioning.",
+    summary: "IPv6 has 340 undecillion addresses. Subnetting works differently — and in many ways more simply. Here's what network engineers need to know when transitioning.",
     content: `
 IPv6 uses 128-bit addresses instead of 32-bit, giving us 2^128 = 340,282,366,920,938,463,463,374,607,431,768,211,456 addresses. Subnetting this space requires a new mental model.
 
@@ -310,8 +304,7 @@ During the IPv4→IPv6 transition, several mechanisms help:
     badge: "badge-cyan",
     readTime: "12 min",
     date: "May 20, 2025",
-    summary:
-      "OSPF area design directly impacts scalability and convergence time. Learn how to structure areas, use ABRs effectively, and summarize routes at area boundaries.",
+    summary: "OSPF area design directly impacts scalability and convergence time. Learn how to structure areas, use ABRs effectively, and summarize routes at area boundaries.",
     content: `
 OSPF (Open Shortest Path First) is a link-state protocol that divides networks into areas to improve scalability. Good area design keeps the LSDB manageable and convergence fast.
 
@@ -357,8 +350,7 @@ On Cisco IOS:
     badge: "badge-gold",
     readTime: "13 min",
     date: "May 26, 2025",
-    summary:
-      "BGP carries the internet's routing table. Learn how to filter, aggregate, and originate prefixes correctly — including how to avoid becoming a source of route leaks.",
+    summary: "BGP carries the internet's routing table. Learn how to filter, aggregate, and originate prefixes correctly — including how to avoid becoming a source of route leaks.",
     content: `
 BGP (Border Gateway Protocol) is the routing protocol that runs the internet. Unlike OSPF, BGP is a path-vector protocol optimized for policy rather than speed. Understanding prefix handling is critical for any network connected to the public internet.
 
@@ -414,8 +406,7 @@ BGP communities allow tagging routes with metadata that peers use for policy dec
     badge: "badge-orange",
     readTime: "8 min",
     date: "Jun 2, 2025",
-    summary:
-      "Network Address Translation comes in several flavors. Understanding each type — and its limitations — is essential for designing networks that work correctly with real applications.",
+    summary: "Network Address Translation comes in several flavors. Understanding each type — and its limitations — is essential for designing networks that work correctly with real applications.",
     content: `
 NAT (Network Address Translation) has kept the internet running for decades despite IPv4 exhaustion. But NAT breaks the end-to-end connectivity model and creates challenges for applications that embed IP addresses.
 
@@ -461,8 +452,7 @@ ISPs use CGNAT to share IPv4 addresses across customers. Your public IP from you
     badge: "badge-purple",
     readTime: "10 min",
     date: "Jun 8, 2025",
-    summary:
-      "The three-layer hierarchical model is the foundation of scalable enterprise networks. Learn how it maps to IP addressing, subnetting strategy, and routing design.",
+    summary: "The three-layer hierarchical model is the foundation of scalable enterprise networks. Learn how it maps to IP addressing, subnetting strategy, and routing design.",
     content: `
 The hierarchical network model divides a network into three distinct layers, each with a clear purpose. This model has guided enterprise network design for decades and remains foundational even in modern spine-leaf data center architectures.
 
@@ -515,14 +505,12 @@ The addressing principles remain: summarize aggressively, design hierarchy first
   {
     id: 11,
     slug: "vlans-and-subnets",
-    title:
-      "VLANs and Subnets: The Relationship Network Engineers Must Understand",
+    title: "VLANs and Subnets: The Relationship Network Engineers Must Understand",
     category: "LAN Design",
     badge: "badge-cyan",
     readTime: "7 min",
     date: "Jun 15, 2025",
-    summary:
-      "VLANs and subnets are often confused. One is a Layer 2 concept, the other Layer 3 — but they work together. Learn the relationship and best practices for mapping them.",
+    summary: "VLANs and subnets are often confused. One is a Layer 2 concept, the other Layer 3 — but they work together. Learn the relationship and best practices for mapping them.",
     content: `
 A common misconception: VLANs and subnets are the same thing. They're not — but they're deeply related. Understanding the distinction makes you a better network designer.
 
@@ -576,8 +564,7 @@ In larger networks, each OSPF area often corresponds to a physical site or distr
     badge: "badge-pink",
     readTime: "9 min",
     date: "Jun 20, 2025",
-    summary:
-      "When packets don't flow, subnetting knowledge is your most powerful diagnostic tool. Here's a systematic methodology for isolating connectivity problems.",
+    summary: "When packets don't flow, subnetting knowledge is your most powerful diagnostic tool. Here's a systematic methodology for isolating connectivity problems.",
     content: `
 Most connectivity problems come down to one of three things: the wrong subnet mask, an incorrect default gateway, or a missing route. Systematic troubleshooting eliminates each possibility quickly.
 
@@ -631,119 +618,30 @@ ACLs are stateless and can block return traffic even when outbound is permitted.
 
 function ArticleModal({ article, onClose }) {
   return (
-    <div
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 100,
-        display: "flex",
-        alignItems: "flex-start",
-        justifyContent: "center",
-        background: "rgba(0,0,0,0.85)",
-        backdropFilter: "blur(12px)",
-        overflowY: "auto",
-        padding: "40px 16px",
-      }}
-      onClick={(e) => e.target === e.currentTarget && onClose()}
-    >
-      <div
-        className="card"
-        style={{
-          maxWidth: 760,
-          width: "100%",
-          padding: "40px",
-          position: "relative",
-        }}
-      >
-        <button
-          onClick={onClose}
-          style={{
-            position: "absolute",
-            top: 20,
-            right: 20,
-            background: "rgba(255,255,255,0.06)",
-            border: "1px solid var(--border-subtle)",
-            borderRadius: 8,
-            color: "var(--text-muted)",
-            padding: "6px 12px",
-            cursor: "pointer",
-            fontSize: 14,
-          }}
-        >
-          ✕ Close
-        </button>
+    <div style={{ position: "fixed", inset: 0, zIndex: 100, display: "flex", alignItems: "flex-start", justifyContent: "center", background: "rgba(0,0,0,0.85)", backdropFilter: "blur(12px)", overflowY: "auto", padding: "40px 16px" }}
+      onClick={e => e.target === e.currentTarget && onClose()}>
+      <div className="card" style={{ maxWidth: 760, width: "100%", padding: "40px", position: "relative" }}>
+        <button onClick={onClose} style={{ position: "absolute", top: 20, right: 20, background: "rgba(255,255,255,0.06)", border: "1px solid var(--border-subtle)", borderRadius: 8, color: "var(--text-muted)", padding: "6px 12px", cursor: "pointer", fontSize: 14 }}>✕ Close</button>
 
         <div style={{ marginBottom: 8 }}>
           <span className={`badge ${article.badge}`}>{article.category}</span>
         </div>
-        <h1
-          style={{
-            fontSize: 26,
-            fontWeight: 800,
-            lineHeight: 1.3,
-            marginBottom: 12,
-          }}
-        >
-          {article.title}
-        </h1>
-        <div
-          style={{
-            display: "flex",
-            gap: 16,
-            marginBottom: 28,
-            fontSize: 12,
-            color: "var(--text-muted)",
-          }}
-        >
+        <h1 style={{ fontSize: 26, fontWeight: 800, lineHeight: 1.3, marginBottom: 12 }}>{article.title}</h1>
+        <div style={{ display: "flex", gap: 16, marginBottom: 28, fontSize: 12, color: "var(--text-muted)" }}>
           <span>{article.date}</span>
           <span>·</span>
           <span>{article.readTime} read</span>
         </div>
 
-        <div
-          style={{
-            fontSize: 14,
-            color: "var(--text-secondary)",
-            lineHeight: 1.9,
-          }}
-        >
-          {article.content
-            .trim()
-            .split("\n\n")
-            .map((para, i) => {
-              if (
-                para.startsWith("**") &&
-                para.endsWith("**") &&
-                !para.slice(2).includes("**")
-              ) {
-                return (
-                  <h3
-                    key={i}
-                    style={{
-                      fontSize: 16,
-                      fontWeight: 700,
-                      color: "var(--text-primary)",
-                      marginTop: 24,
-                      marginBottom: 8,
-                    }}
-                  >
-                    {para.slice(2, -2)}
-                  </h3>
-                );
-              }
-              // Handle bold inline
-              const formatted = para.replace(
-                /\*\*(.*?)\*\*/g,
-                '<strong style="color:var(--text-primary)">$1</strong>',
-              );
-              return (
-                <p
-                  key={i}
-                  style={{ marginBottom: 14 }}
-                  dangerouslySetInnerHTML={{ __html: formatted }}
-                />
-              );
-            })}
+        <div style={{ fontSize: 14, color: "var(--text-secondary)", lineHeight: 1.9 }}>
+          {article.content.trim().split("\n\n").map((para, i) => {
+            if (para.startsWith("**") && para.endsWith("**") && !para.slice(2).includes("**")) {
+              return <h3 key={i} style={{ fontSize: 16, fontWeight: 700, color: "var(--text-primary)", marginTop: 24, marginBottom: 8 }}>{para.slice(2, -2)}</h3>;
+            }
+            // Handle bold inline
+            const formatted = para.replace(/\*\*(.*?)\*\*/g, '<strong style="color:var(--text-primary)">$1</strong>');
+            return <p key={i} style={{ marginBottom: 14 }} dangerouslySetInnerHTML={{ __html: formatted }} />;
+          })}
         </div>
       </div>
     </div>
@@ -755,221 +653,82 @@ export default function Blog() {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
 
-  const categories = [
-    "All",
-    ...Array.from(new Set(ARTICLES.map((a) => a.category))),
-  ];
+  const categories = ["All", ...Array.from(new Set(ARTICLES.map(a => a.category)))];
 
-  const filtered = ARTICLES.filter((a) => {
+  const filtered = ARTICLES.filter(a => {
     const matchCat = activeCategory === "All" || a.category === activeCategory;
-    const matchSearch =
-      !search ||
-      a.title.toLowerCase().includes(search.toLowerCase()) ||
-      a.summary.toLowerCase().includes(search.toLowerCase());
+    const matchSearch = !search || a.title.toLowerCase().includes(search.toLowerCase()) || a.summary.toLowerCase().includes(search.toLowerCase());
     return matchCat && matchSearch;
   });
 
   return (
-    <div
-      className="page-wrapper"
-      style={{ background: "var(--bg-deep)", minHeight: "100vh" }}
-    >
+    <div className="page-wrapper" style={{ background: "var(--bg-deep)", minHeight: "100vh" }}>
       <div className="bg-grid" />
-      <div
-        className="bg-glow-orb"
-        style={{
-          width: 600,
-          height: 600,
-          background:
-            "radial-gradient(circle, rgba(250,189,47,0.07) 0%, transparent 70%)",
-          top: -150,
-          right: -150,
-        }}
-      />
+      <div className="bg-glow-orb" style={{ width: 600, height: 600, background: "radial-gradient(circle, rgba(250,189,47,0.07) 0%, transparent 70%)", top: -150, right: -150 }} />
       <NavBar />
 
-      {selected && (
-        <ArticleModal article={selected} onClose={() => setSelected(null)} />
-      )}
+      {selected && <ArticleModal article={selected} onClose={() => setSelected(null)} />}
 
-      <div
-        style={{ maxWidth: 1100, margin: "0 auto", padding: "48px 24px 60px" }}
-      >
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "48px 24px 60px" }}>
         <div className="animate-fadeInUp" style={{ marginBottom: 40 }}>
           <div className="section-tag">Knowledge Base</div>
-          <h1 style={{ fontSize: 36, fontWeight: 800, marginBottom: 8 }}>
-            Networking Blog
-          </h1>
+          <h1 style={{ fontSize: 36, fontWeight: 800, marginBottom: 8 }}>Networking Blog</h1>
           <p style={{ fontSize: 13, color: "var(--text-secondary)" }}>
-            Deep-dives into subnetting, VLSM, CIDR, routing protocols, and
-            modern network design.
+            Deep-dives into subnetting, VLSM, CIDR, routing protocols, and modern network design.
           </p>
         </div>
 
         {/* Search */}
-        <div
-          className="animate-fadeInUp stagger-1"
-          style={{ marginBottom: 24 }}
-        >
-          <input
-            className="input-field"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search articles..."
-            style={{ maxWidth: 400 }}
-          />
+        <div className="animate-fadeInUp stagger-1" style={{ marginBottom: 24 }}>
+          <input className="input-field" value={search} onChange={e => setSearch(e.target.value)}
+            placeholder="Search articles..." style={{ maxWidth: 400 }} />
         </div>
 
         {/* Category filter */}
-        <div
-          className="tab-bar animate-fadeInUp stagger-1"
-          style={{ marginBottom: 32, flexWrap: "wrap" }}
-        >
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              className={`tab-btn ${activeCategory === cat ? "active" : ""}`}
-              onClick={() => setActiveCategory(cat)}
-            >
-              {cat}
-            </button>
+        <div className="tab-bar animate-fadeInUp stagger-1" style={{ marginBottom: 32, flexWrap: "wrap" }}>
+          {categories.map(cat => (
+            <button key={cat} className={`tab-btn ${activeCategory === cat ? "active" : ""}`}
+              onClick={() => setActiveCategory(cat)}>{cat}</button>
           ))}
         </div>
 
         {/* Articles grid */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
-            gap: 20,
-          }}
-        >
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 20 }}>
           {filtered.map((article, i) => (
-            <div
-              key={article.id}
-              className={`card animate-fadeInUp stagger-${Math.min(i + 1, 4)}`}
-              style={{
-                padding: 28,
-                cursor: "pointer",
-                transition: "all 0.2s",
-                display: "flex",
-                flexDirection: "column",
-                gap: 14,
-              }}
+            <div key={article.id} className={`card animate-fadeInUp stagger-${Math.min(i + 1, 4)}`}
+              style={{ padding: 28, cursor: "pointer", transition: "all 0.2s", display: "flex", flexDirection: "column", gap: 14 }}
               onClick={() => setSelected(article)}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateY(-3px)";
-                e.currentTarget.style.borderColor = "rgba(250,189,47,0.3)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "none";
-                e.currentTarget.style.borderColor = "";
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
-                <span className={`badge ${article.badge}`}>
-                  {article.category}
-                </span>
-                <span
-                  style={{
-                    fontSize: 11,
-                    color: "var(--text-muted)",
-                    fontFamily: "DM Mono, monospace",
-                  }}
-                >
-                  {article.readTime}
-                </span>
+              onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.borderColor = "rgba(250,189,47,0.3)"; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.borderColor = ""; }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <span className={`badge ${article.badge}`}>{article.category}</span>
+                <span style={{ fontSize: 11, color: "var(--text-muted)", fontFamily: "DM Mono, monospace" }}>{article.readTime}</span>
               </div>
               <div>
-                <h2
-                  style={{
-                    fontSize: 16,
-                    fontWeight: 700,
-                    lineHeight: 1.4,
-                    marginBottom: 8,
-                  }}
-                >
-                  {article.title}
-                </h2>
-                <p
-                  style={{
-                    fontSize: 13,
-                    color: "var(--text-secondary)",
-                    lineHeight: 1.7,
-                  }}
-                >
-                  {article.summary}
-                </p>
+                <h2 style={{ fontSize: 16, fontWeight: 700, lineHeight: 1.4, marginBottom: 8 }}>{article.title}</h2>
+                <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.7 }}>{article.summary}</p>
               </div>
-              <div
-                style={{
-                  marginTop: "auto",
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
-                <span style={{ fontSize: 11, color: "var(--text-muted)" }}>
-                  {article.date}
-                </span>
-                <span
-                  style={{
-                    fontSize: 12,
-                    color: "var(--gold)",
-                    fontFamily: "Syne, sans-serif",
-                    fontWeight: 700,
-                  }}
-                >
-                  Read →
-                </span>
+              <div style={{ marginTop: "auto", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <span style={{ fontSize: 11, color: "var(--text-muted)" }}>{article.date}</span>
+                <span style={{ fontSize: 12, color: "var(--gold)", fontFamily: "Syne, sans-serif", fontWeight: 700 }}>Read →</span>
               </div>
             </div>
           ))}
         </div>
 
         {filtered.length === 0 && (
-          <div
-            className="card"
-            style={{
-              padding: 48,
-              textAlign: "center",
-              color: "var(--text-muted)",
-            }}
-          >
+          <div className="card" style={{ padding: 48, textAlign: "center", color: "var(--text-muted)" }}>
             No articles match your search.
           </div>
         )}
 
         <div style={{ display: "flex", gap: 12, marginTop: 40 }}>
-          <Link
-            to="/"
-            className="btn-secondary"
-            style={{
-              textDecoration: "none",
-              display: "inline-flex",
-              alignItems: "center",
-            }}
-          >
-            ← Home
-          </Link>
+          <Link to="/" className="btn-secondary" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center" }}>← Home</Link>
         </div>
       </div>
 
       <footer className="app-footer">
-        Made with ♥ by{" "}
-        <a
-          href="https://github.com/hafiz-sakib"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Mohammad Hafizur Rahman Sakib
-        </a>
+        Made with ♥ by <a href="https://github.com/hafiz-sakib" target="_blank" rel="noopener noreferrer">Mohammad Hafizur Rahman Sakib</a>
       </footer>
     </div>
   );

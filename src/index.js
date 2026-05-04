@@ -16,9 +16,6 @@ import IPClass from "./Ipclass";
 import SubnetQuiz from "./Subnetquiz";
 import NetworkSummary from "./NetworkSummary";
 import Blog from "./Blog";
-import SubnetVisualMap from "./Subnetvisualmap";
-import IPHeatmap from "./Ipheatmap";
-import Subnetcomparison from "./Subnetcomparison";
 import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -41,9 +38,6 @@ root.render(
       <Route path="/subnet-quiz" element={<SubnetQuiz />} />
       <Route path="/network-summary" element={<NetworkSummary />} />
       <Route path="/blog" element={<Blog />} />
-      <Route path="/subnet-visual-map" element={<SubnetVisualMap />} />
-      <Route path="/ip-heatmap" element={<IPHeatmap />} />
-      <Route path="/subnet-comparison" element={<Subnetcomparison />} />
     </Routes>
-  </Router>,
+  </Router>
 );
