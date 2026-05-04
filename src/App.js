@@ -1,27 +1,185 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import NavBar from "./Navbar";
 import "./App.css";
 
-function NavBar() {
-  const location = useLocation();
-  return (
-    <nav className="nav-bar">
-      <Link to="/" className="nav-logo">
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-          <rect x="1" y="1" width="9" height="9" rx="2" fill="#fabd2f" opacity="0.9" />
-          <rect x="12" y="1" width="9" height="9" rx="2" fill="#fabd2f" opacity="0.4" />
-          <rect x="1" y="12" width="9" height="9" rx="2" fill="#fabd2f" opacity="0.4" />
-          <rect x="12" y="12" width="9" height="9" rx="2" fill="#06d6a0" opacity="0.8" />
-        </svg>
-        Sub<span>Calc</span>
-      </Link>
-      <div className="nav-links">
-        <Link to="/" className={`nav-link ${location.pathname === "/" ? "active" : ""}`}>Home</Link>
-        <Link to="/normal-subnet" className={`nav-link ${location.pathname === "/normal-subnet" ? "active" : ""}`}>FLSM</Link>
-        <Link to="/vlsm-subnet" className={`nav-link ${location.pathname.includes("vlsm") ? "active" : ""}`}>VLSM</Link>
-      </div>
-    </nav>
-  );
-}
+const tools = [
+  {
+    to: "/normal-subnet",
+    icon: "▦",
+    color: "#fabd2f",
+    bg: "rgba(250,189,47,0.1)",
+    border: "rgba(250,189,47,0.2)",
+    badge: "FLSM",
+    badgeClass: "badge-gold",
+    title: "Fixed Length Subnetting",
+    desc: "Divide a network into equal-sized subnets with uniform prefix length.",
+    features: [
+      "Equal subnet sizes",
+      "Simple to implement",
+      "Predictable addressing",
+    ],
+  },
+  {
+    to: "/vlsm-subnet",
+    icon: "◈",
+    color: "#06d6a0",
+    bg: "rgba(6,214,160,0.1)",
+    border: "rgba(6,214,160,0.2)",
+    badge: "VLSM",
+    badgeClass: "badge-cyan",
+    title: "Variable Length Subnetting",
+    desc: "Allocate subnets based on individual host requirements for max efficiency.",
+    features: ["Optimized space", "Flexible allocation", "Sorted by host need"],
+  },
+  {
+    to: "/ip-info",
+    icon: "ⓘ",
+    color: "#a29bfe",
+    bg: "rgba(162,155,254,0.1)",
+    border: "rgba(162,155,254,0.2)",
+    badge: "IP Info",
+    badgeClass: "badge-purple",
+    title: "IP Address Analyzer",
+    desc: "Deep-dive into any IPv4 address — class, type, binary, RFC classification.",
+    features: [
+      "IP class detection",
+      "Binary breakdown",
+      "Private/public/reserved",
+    ],
+  },
+  {
+    to: "/binary-converter",
+    icon: "⟺",
+    color: "#74b9ff",
+    bg: "rgba(116,185,255,0.1)",
+    border: "rgba(116,185,255,0.2)",
+    badge: "Converter",
+    badgeClass: "badge-blue",
+    title: "Binary ↔ Decimal IP",
+    desc: "Convert IP addresses between binary, decimal, hex, and integer formats.",
+    features: ["Bi-directional", "Octet visualization", "Hex & integer output"],
+  },
+  {
+    to: "/cidr-range",
+    icon: "⇔",
+    color: "#fd79a8",
+    bg: "rgba(253,121,168,0.1)",
+    border: "rgba(253,121,168,0.2)",
+    badge: "CIDR",
+    badgeClass: "badge-pink",
+    title: "CIDR Range Expander",
+    desc: "Expand any CIDR notation into full host range, network, and broadcast info.",
+    features: [
+      "Instant expansion",
+      "Host range output",
+      "Mask format conversion",
+    ],
+  },
+  {
+    to: "/wildcard-mask",
+    icon: "⊛",
+    color: "#fd9644",
+    bg: "rgba(253,150,68,0.1)",
+    border: "rgba(253,150,68,0.2)",
+    badge: "Wildcard",
+    badgeClass: "badge-orange",
+    title: "Wildcard Mask Tool",
+    desc: "Convert between subnet masks and wildcard masks used in ACLs and routing.",
+    features: ["Mask ↔ wildcard", "CIDR conversion", "ACL-ready output"],
+  },
+  {
+    to: "/overlap-detector",
+    icon: "⊕",
+    color: "#06d6a0",
+    bg: "rgba(6,214,160,0.08)",
+    border: "rgba(6,214,160,0.2)",
+    badge: "Overlap",
+    badgeClass: "badge-cyan",
+    title: "Subnet Overlap Detector",
+    desc: "Check whether multiple subnets overlap — critical for network design.",
+    features: ["Multi-subnet check", "Conflict detection", "Visual report"],
+  },
+  {
+    to: "/ip-class",
+    icon: "◉",
+    color: "#fabd2f",
+    bg: "rgba(250,189,47,0.08)",
+    border: "rgba(250,189,47,0.2)",
+    badge: "Class",
+    badgeClass: "badge-gold",
+    title: "IP Class Identifier",
+    desc: "Identify the classful network class (A/B/C/D/E) and default mask.",
+    features: ["Class A–E detection", "Default mask", "Usable host count"],
+  },
+  {
+    to: "/subnet-quiz",
+    icon: "?",
+    color: "#a29bfe",
+    bg: "rgba(162,155,254,0.08)",
+    border: "rgba(162,155,254,0.2)",
+    badge: "Quiz",
+    badgeClass: "badge-purple",
+    title: "Subnetting Quiz",
+    desc: "Test and sharpen your subnetting skills with timed practice questions.",
+    features: ["10 question sets", "Timed mode", "Score tracking"],
+  },
+  {
+    to: "/network-summary",
+    icon: "≡",
+    color: "#74b9ff",
+    bg: "rgba(116,185,255,0.08)",
+    border: "rgba(116,185,255,0.2)",
+    badge: "Summary",
+    badgeClass: "badge-blue",
+    title: "Network Summary Tool",
+    desc: "Summarize and aggregate multiple IP ranges into a supernet.",
+    features: [
+      "Route aggregation",
+      "Supernet calculation",
+      "Prefix optimization",
+    ],
+  },
+  {
+    to: "/subnet-visual-map",
+    icon: "🗺️",
+    color: "#ff6b6b",
+    bg: "rgba(255,107,107,0.1)",
+    border: "rgba(255,107,107,0.2)",
+    badge: "Visual",
+    badgeClass: "badge-red",
+    title: "Subnet Visual Map",
+    desc: "Visualize subnet allocations and network structure on an interactive map.",
+    features: ["Subnet layout", "Visual address blocks", "Easy comparison"],
+  },
+  {
+    to: "/ip-heatmap",
+    icon: "🔥",
+    color: "#f0932b",
+    bg: "rgba(240,147,43,0.1)",
+    border: "rgba(240,147,43,0.2)",
+    badge: "Heatmap",
+    badgeClass: "badge-orange",
+    title: "IP Heatmap",
+    desc: "Analyze IP usage patterns with a heatmap view of network activity.",
+    features: ["Usage patterns", "Hotspot detection", "Visual analytics"],
+  },
+  {
+    to: "/subnet-comparison",
+    icon: "⚖️",
+    color: "#6c5ce7",
+    bg: "rgba(108,92,231,0.1)",
+    border: "rgba(108,92,231,0.2)",
+    badge: "Compare",
+    badgeClass: "badge-purple",
+    title: "Subnet Comparison",
+    desc: "Compare subnet sizes, host ranges, and efficiency side by side.",
+    features: [
+      "Side-by-side analysis",
+      "Host count comparison",
+      "Efficiency metrics",
+    ],
+  },
+];
 
 function App() {
   return (
@@ -30,240 +188,240 @@ function App() {
       <div
         className="bg-glow-orb"
         style={{
-          width: "min(600px, 90vw)",
-          height: "min(600px, 90vw)",
-          background: "radial-gradient(circle, rgba(250,189,47,0.12) 0%, transparent 70%)",
+          width: 700,
+          height: 700,
+          background:
+            "radial-gradient(circle, rgba(250,189,47,0.1) 0%, transparent 70%)",
           top: -200,
-          right: -100,
+          right: -200,
           animation: "pulse-glow 6s ease-in-out infinite",
         }}
       />
       <div
         className="bg-glow-orb"
         style={{
-          width: "min(500px, 80vw)",
-          height: "min(500px, 80vw)",
-          background: "radial-gradient(circle, rgba(6,214,160,0.08) 0%, transparent 70%)",
-          bottom: -100,
-          left: -50,
+          width: 500,
+          height: 500,
+          background:
+            "radial-gradient(circle, rgba(6,214,160,0.07) 0%, transparent 70%)",
+          bottom: 0,
+          left: -100,
           animation: "pulse-glow 8s ease-in-out infinite 2s",
         }}
       />
 
       <NavBar />
 
-      <div className="page-content">
-        <div className="page-content-inner page-content-inner--medium">
-          {/* Hero */}
-          <div
-            className="animate-fadeInUp"
-            style={{
-              textAlign: "center",
-              marginBottom: "clamp(36px, 7vw, 72px)",
-            }}
-          >
-            <div className="section-tag" style={{ justifyContent: "center" }}>
-              Network Utility Tool
-            </div>
-            <h1
-              style={{
-                fontSize: "clamp(32px, 9vw, 72px)",
-                fontWeight: 800,
-                lineHeight: 1.05,
-                marginBottom: 16,
-                fontFamily: "Syne, sans-serif",
-              }}
-            >
-              Subnet
-              <br />
-              <span style={{ color: "var(--gold)" }}>Calculator</span>
-            </h1>
-            <p
-              style={{
-                fontSize: "clamp(13px, 1.8vw, 15px)",
-                color: "var(--text-secondary)",
-                maxWidth: 440,
-                margin: "0 auto",
-                lineHeight: 1.7,
-              }}
-            >
-              Precision IP subnetting for network engineers. Calculate FLSM and
-              VLSM allocations with full detail output.
-            </p>
+      <div
+        className="page-content"
+        style={{ maxWidth: 1100, margin: "0 auto", padding: "64px 24px 40px" }}
+      >
+        {/* Hero */}
+        <div
+          className="animate-fadeInUp"
+          style={{ textAlign: "center", marginBottom: 72 }}
+        >
+          <div className="section-tag" style={{ justifyContent: "center" }}>
+            Professional Network Utility Suite
           </div>
-
-          {/* Cards */}
-          <div
+          <h1
             style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
-              gap: "clamp(12px, 3vw, 16px)",
+              fontSize: "clamp(40px, 7vw, 72px)",
+              fontWeight: 800,
+              lineHeight: 1.05,
               marginBottom: 20,
             }}
           >
-            {/* FLSM Card */}
-            <div
-              className="card animate-fadeInUp stagger-1"
-              style={{
-                padding: "clamp(20px, 4vw, 32px)",
-                position: "relative",
-                overflow: "hidden",
-              }}
-            >
-              <div
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  right: 0,
-                  width: 120,
-                  height: 120,
-                  background: "radial-gradient(circle at top right, rgba(250,189,47,0.1), transparent 70%)",
-                  borderRadius: "0 14px 0 0",
-                }}
-              />
-              <div style={{ marginBottom: 20 }}>
-                <div
-                  style={{
-                    width: 44,
-                    height: 44,
-                    background: "var(--gold-dim)",
-                    borderRadius: 10,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    marginBottom: 14,
-                  }}
-                >
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fabd2f" strokeWidth="1.8">
-                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                    <path d="M3 9h18M9 21V9" />
-                  </svg>
-                </div>
-                <span className="badge badge-gold" style={{ marginBottom: 10 }}>FLSM</span>
-                <h2 style={{ fontSize: "clamp(18px, 3.5vw, 24px)", fontWeight: 800, marginBottom: 8, fontFamily: "Syne, sans-serif" }}>
-                  Fixed Length
-                </h2>
-                <p style={{ fontSize: "clamp(12px, 1.8vw, 13px)", color: "var(--text-secondary)", lineHeight: 1.7 }}>
-                  Divide a network into equal-sized subnets. Ideal for uniform host requirements across segments.
-                </p>
-              </div>
-              <div style={{ marginBottom: 20, display: "flex", flexDirection: "column", gap: 6 }}>
-                {["Equal subnet sizes", "Simple to implement", "Predictable addressing"].map((f) => (
-                  <div key={f} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, color: "var(--text-secondary)" }}>
-                    <span style={{ color: "var(--gold)", fontSize: 14, flexShrink: 0 }}>✓</span> {f}
-                  </div>
-                ))}
-              </div>
-              <Link to="/normal-subnet" className="btn-primary" style={{ display: "flex", textDecoration: "none" }}>
-                Open FLSM →
-              </Link>
-            </div>
-
-            {/* VLSM Card */}
-            <div
-              className="card animate-fadeInUp stagger-2"
-              style={{
-                padding: "clamp(20px, 4vw, 32px)",
-                position: "relative",
-                overflow: "hidden",
-                borderColor: "rgba(6,214,160,0.15)",
-              }}
-            >
-              <div
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  right: 0,
-                  width: 120,
-                  height: 120,
-                  background: "radial-gradient(circle at top right, rgba(6,214,160,0.08), transparent 70%)",
-                  borderRadius: "0 14px 0 0",
-                }}
-              />
-              <div style={{ marginBottom: 20 }}>
-                <div
-                  style={{
-                    width: 44,
-                    height: 44,
-                    background: "var(--cyan-dim)",
-                    borderRadius: 10,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    marginBottom: 14,
-                  }}
-                >
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#06d6a0" strokeWidth="1.8">
-                    <path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z" />
-                  </svg>
-                </div>
-                <span className="badge badge-cyan" style={{ marginBottom: 10 }}>VLSM</span>
-                <h2 style={{ fontSize: "clamp(18px, 3.5vw, 24px)", fontWeight: 800, marginBottom: 8, fontFamily: "Syne, sans-serif" }}>
-                  Variable Length
-                </h2>
-                <p style={{ fontSize: "clamp(12px, 1.8vw, 13px)", color: "var(--text-secondary)", lineHeight: 1.7 }}>
-                  Efficiently allocate different-sized subnets based on host requirements for each segment.
-                </p>
-              </div>
-              <div style={{ marginBottom: 20, display: "flex", flexDirection: "column", gap: 6 }}>
-                {["Optimized address space", "Flexible allocation", "Sorted by host need"].map((f) => (
-                  <div key={f} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, color: "var(--text-secondary)" }}>
-                    <span style={{ color: "var(--cyan)", fontSize: 14, flexShrink: 0 }}>✓</span> {f}
-                  </div>
-                ))}
-              </div>
-              <Link
-                to="/vlsm-subnet"
-                className="btn-primary"
-                style={{
-                  display: "flex",
-                  textDecoration: "none",
-                  background: "var(--cyan-dim)",
-                  color: "var(--cyan)",
-                  border: "1px solid rgba(6,214,160,0.25)",
-                  boxShadow: "none",
-                }}
-              >
-                Open VLSM →
-              </Link>
-            </div>
-          </div>
-
-          {/* Info strip */}
-          <div
-            className="card animate-fadeInUp stagger-3"
-            style={{ padding: "clamp(16px, 3vw, 20px) clamp(16px, 4vw, 28px)" }}
+            SubCalc
+            <br />
+            <span style={{ color: "var(--gold)" }}>Pro</span>
+          </h1>
+          <p
+            style={{
+              fontSize: 15,
+              color: "var(--text-secondary)",
+              maxWidth: 500,
+              margin: "0 auto 32px",
+              lineHeight: 1.8,
+            }}
           >
-            <div
+            A complete networking toolkit for engineers — subnet calculators, IP
+            analyzers, binary converters, overlap detection, quizzes, and more.
+          </p>
+          <div
+            className="hero-buttons"
+            style={{
+              display: "flex",
+              gap: 12,
+              justifyContent: "center",
+              flexWrap: "wrap",
+            }}
+          >
+            <Link to="/normal-subnet" className="btn-primary">
+              Start with FLSM →
+            </Link>
+            <Link
+              to="/vlsm-subnet"
               style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(80px, 1fr))",
-                gap: "clamp(12px, 3vw, 16px) clamp(8px, 2vw, 12px)",
+                display: "inline-flex",
                 alignItems: "center",
-                justifyItems: "center",
+                textDecoration: "none",
+                background: "var(--cyan-dim)",
+                color: "var(--cyan)",
+                fontFamily: "Syne, sans-serif",
+                fontWeight: 700,
+                fontSize: 13,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                padding: "14px 32px",
+                borderRadius: 8,
+                border: "1px solid rgba(6,214,160,0.25)",
               }}
             >
-              {[
-                { label: "Supports", value: "IPv4" },
-                { label: "Max Subnets", value: "/32" },
-                { label: "CIDR Notation", value: "Yes" },
-                { label: "Wildcard Mask", value: "VLSM" },
-                { label: "Copy Results", value: "Yes" },
-                { label: "History Log", value: "Yes" },
-              ].map(({ label, value }) => (
-                <div key={label} style={{ textAlign: "center" }}>
-                  <div className="stat-value" style={{ fontSize: "clamp(13px, 2.5vw, 18px)" }}>{value}</div>
-                  <div className="stat-label">{label}</div>
-                </div>
-              ))}
-            </div>
+              VLSM Calculator
+            </Link>
           </div>
+        </div>
+
+        {/* Stats strip */}
+        <div
+          className="card animate-fadeInUp stagger-1"
+          style={{
+            padding: "20px 32px",
+            display: "flex",
+            gap: 32,
+            flexWrap: "wrap",
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginBottom: 48,
+          }}
+        >
+          {[
+            { label: "Tools Available", value: "13+" },
+            { label: "IPv4 Support", value: "Full" },
+            { label: "CIDR Notation", value: "Yes" },
+            { label: "CSV Export", value: "Yes" },
+            { label: "History Log", value: "Yes" },
+            { label: "Offline Ready", value: "Yes" },
+          ].map(({ label, value }) => (
+            <div key={label} style={{ textAlign: "center" }}>
+              <div className="stat-value" style={{ fontSize: 20 }}>
+                {value}
+              </div>
+              <div className="stat-label">{label}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Tools Grid */}
+        <div style={{ marginBottom: 16 }}>
+          <div className="section-tag">All Tools</div>
+          <h2 style={{ fontSize: 28, fontWeight: 800, marginBottom: 8 }}>
+            Choose a Calculator
+          </h2>
+          <p
+            style={{
+              fontSize: 13,
+              color: "var(--text-secondary)",
+              marginBottom: 32,
+            }}
+          >
+            10 professional networking tools in one place.
+          </p>
+        </div>
+
+        <div
+          className="tool-grid"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+            gap: 16,
+            marginBottom: 60,
+          }}
+        >
+          {tools.map((tool, i) => (
+            <Link
+              key={tool.to}
+              to={tool.to}
+              className={`tool-card animate-fadeInUp stagger-${Math.min(i + 1, 5)}`}
+              style={{ borderColor: tool.border, textDecoration: "none" }}
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                <div
+                  className="tool-card-icon"
+                  style={{
+                    background: tool.bg,
+                    color: tool.color,
+                    fontSize: 20,
+                    fontWeight: 700,
+                  }}
+                >
+                  {tool.icon}
+                </div>
+                <span className={`badge ${tool.badgeClass}`}>{tool.badge}</span>
+              </div>
+              <div>
+                <div className="tool-card-title">{tool.title}</div>
+                <div className="tool-card-desc" style={{ marginTop: 6 }}>
+                  {tool.desc}
+                </div>
+              </div>
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                {tool.features.map((f) => (
+                  <span key={f} className="chip" style={{ fontSize: 10 }}>
+                    {f}
+                  </span>
+                ))}
+              </div>
+              <div className="tool-card-arrow" style={{ color: tool.color }}>
+                →
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* Blog teaser */}
+        <div
+          className="card animate-fadeInUp stagger-3"
+          style={{
+            padding: "32px 36px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 24,
+            flexWrap: "wrap",
+            borderColor: "rgba(250,189,47,0.15)",
+          }}
+        >
+          <div>
+            <div className="section-tag">Knowledge Base</div>
+            <h2 style={{ fontSize: 24, fontWeight: 800, marginBottom: 8 }}>
+              Networking Blog
+            </h2>
+            <p
+              style={{
+                fontSize: 13,
+                color: "var(--text-secondary)",
+                lineHeight: 1.7,
+              }}
+            >
+              Deep-dives into subnetting, VLSM, CIDR, routing protocols, and
+              modern network design.
+            </p>
+          </div>
+          <Link to="/blog" className="btn-primary">
+            Read Articles →
+          </Link>
         </div>
       </div>
 
       <footer className="app-footer">
         Made with ♥ by{" "}
-        <a href="https://github.com/hafiz-sakib" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://github.com/hafiz-sakib"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Mohammad Hafizur Rahman Sakib
         </a>
       </footer>

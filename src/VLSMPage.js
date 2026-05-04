@@ -24,9 +24,7 @@ const VLSMPage = () => {
     const calculateVLSM = (baseIP, originalMask, hostRequirements) => {
       const results = [];
       const subnets = hostRequirements.map((hosts) => ({
-        requiredHosts: hosts,
-        allocatedMask: 0,
-        networkAddress: 0,
+        requiredHosts: hosts, allocatedMask: 0, networkAddress: 0,
       }));
       subnets.sort((a, b) => b.requiredHosts - a.requiredHosts);
       let currentIP = baseIP;
@@ -71,75 +69,26 @@ const VLSMPage = () => {
   }, [location.state, navigate]);
 
   return (
-    <div
-      className="page-wrapper"
-      style={{
-        background: "var(--bg-deep)",
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <div className="page-wrapper" style={{ background: 'var(--bg-deep)', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <div className="bg-grid" />
 
       {showModal && (
-        <div
-          style={{
-            position: "fixed",
-            inset: 0,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            background: "rgba(0,0,0,0.7)",
-            backdropFilter: "blur(10px)",
-            zIndex: 50,
-            padding: "0 16px",
-          }}
-        >
-          <div className="card" style={{ padding: "clamp(24px, 5vw, 40px)", maxWidth: 360, width: "100%", textAlign: "center" }}>
-            <div
-              style={{
-                width: 48,
-                height: 48,
-                background: "rgba(239,68,68,0.1)",
-                borderRadius: 12,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                margin: "0 auto 16px",
-                fontSize: 22,
-              }}
-            >
-              ⚠️
-            </div>
-            <h2 style={{ fontSize: 20, fontWeight: 800, marginBottom: 8, color: "#f87171" }}>No Input Data</h2>
-            <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: 24 }}>
-              No calculation data was found. Redirecting to home...
-            </p>
-            <Link to="/" className="btn-primary" style={{ textDecoration: "none", display: "flex", justifyContent: "center" }}>
-              Go Home
-            </Link>
+        <div style={{ position: 'fixed', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(10px)', zIndex: 50 }}>
+          <div className="card" style={{ padding: 40, maxWidth: 360, textAlign: 'center' }}>
+            <div style={{ width: 48, height: 48, background: 'rgba(239,68,68,0.1)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', fontSize: 22 }}>⚠️</div>
+            <h2 style={{ fontSize: 20, fontWeight: 800, marginBottom: 8, color: '#f87171' }}>No Input Data</h2>
+            <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: 24 }}>No calculation data was found. Redirecting to home...</p>
+            <Link to="/" className="btn-primary" style={{ textDecoration: 'none', display: 'inline-block' }}>Go Home</Link>
           </div>
         </div>
       )}
 
-      <div style={{ textAlign: "center", position: "relative", zIndex: 1 }}>
-        <div
-          style={{
-            width: 48,
-            height: 48,
-            border: "2px solid var(--gold)",
-            borderTopColor: "transparent",
-            borderRadius: "50%",
-            margin: "0 auto 16px",
-            animation: "spin 0.8s linear infinite",
-          }}
-        />
-        <p style={{ fontFamily: "DM Mono, monospace", fontSize: 13, color: "var(--text-secondary)" }}>
-          Calculating VLSM allocation...
-        </p>
+      <div style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
+        <div style={{ width: 48, height: 48, border: '2px solid var(--gold)', borderTopColor: 'transparent', borderRadius: '50%', margin: '0 auto 16px', animation: 'spin 0.8s linear infinite' }} />
+        <p style={{ fontFamily: 'DM Mono, monospace', fontSize: 13, color: 'var(--text-secondary)' }}>Calculating VLSM allocation...</p>
       </div>
+
+      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
     </div>
   );
 };
