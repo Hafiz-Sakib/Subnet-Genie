@@ -478,10 +478,26 @@ export default function NetworkTrafficChart() {
                 className="input-field"
                 value={numSubnets}
                 onChange={(e) => setNumSubnets(+e.target.value)}
-                style={{ cursor: "pointer" }}
+                style={{
+                  cursor: "pointer",
+                  background: "#111827",
+                  color: "var(--text-primary)",
+                  backgroundImage:
+                    "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%234a5568' d='M6 8L1 3h10z'/%3E%3C/svg%3E\")",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "right 14px center",
+                  paddingRight: 36,
+                }}
               >
                 {[2, 3, 4, 5, 6, 7, 8].map((n) => (
-                  <option key={n} value={n}>
+                  <option
+                    key={n}
+                    value={n}
+                    style={{
+                      background: "#111827",
+                      color: "#f0f4ff",
+                    }}
+                  >
                     {n} subnets
                   </option>
                 ))}
